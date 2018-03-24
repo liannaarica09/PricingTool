@@ -54,7 +54,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#submit").on("click", function () {
+  $("#submit").on("click touchstart", function () {
     $(".twelveSon").children(".errorMsg").remove();
     $("#itemsTable").empty();
     if (clothing === true) {
