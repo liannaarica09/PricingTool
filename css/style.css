@@ -187,7 +187,8 @@ td {
 }
 
 #input:disabled {
-  background-color: rgb(204, 226, 208);
+  background-color: red;
+  /* rgb(204, 226, 208); */
   /* border:; */
 }
 
