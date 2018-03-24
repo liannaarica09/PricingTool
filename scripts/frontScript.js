@@ -71,7 +71,7 @@ $(document).ready(function () {
     $(".recentItem").toggle();
   });
 
-  $(document).on("click touchstart touchend tap", ".boxers", function (event) {
+  $(document).on("click touchstart", ".boxers", function (event) {
     event.preventDefault();
     var clickItem = $(this).html();
     db.ref("recentItems").push({
