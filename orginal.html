@@ -166,7 +166,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 	<script type="text/javascript">
-
 		var item = "anthropologie";
 		var category = "63861";
 		var highest = 0;
@@ -238,8 +237,7 @@
 				if (modeMap[val] > maxCount) {
 					modes = [val];
 					maxCount = modeMap[val];
-				}
-				else if (modeMap[val] === maxCount) {
+				} else if (modeMap[val] === maxCount) {
 					modes.push(val);
 					maxCount = modeMap[val];
 				}
@@ -248,7 +246,11 @@
 		}
 
 		function getData() {
-			queryURL = "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + item + "&itemFilter(0).name=SoldItemsOnly&itemFilter(0).value=true&itemFilter(1).name=Condition&itemFilter(1).value=3000&itemFilter(2).name=MinPrice&itemFilter(2).value=10&paginationInput.pageNumber=" + p + "&categoryId=" + category;
+			queryURL =
+				"https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" +
+				item +
+				"&itemFilter(0).name=SoldItemsOnly&itemFilter(0).value=true&itemFilter(1).name=Condition&itemFilter(1).value=3000&itemFilter(2).name=MinPrice&itemFilter(2).value=10&paginationInput.pageNumber=" +
+				p + "&categoryId=" + category;
 
 			console.log(queryURL);
 			console.log(category);
@@ -264,25 +266,31 @@
 				for (var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
 
 					var newRow = $("<tr>");
-					var picture = $("<td>").html("<img src=" + result.findCompletedItemsResponse[0].searchResult[0].item[i].galleryURL + "alt='img'>");
+					var picture = $("<td>").html("<img src=" + result.findCompletedItemsResponse[0].searchResult[0].item[i].galleryURL +
+						"alt='img'>");
 					var Title = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].title);
-					var Price = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__);
+					var Price = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[
+						0].__value__);
 
 					newRow.append(picture);
 					newRow.append(Title);
 					newRow.append(Price);
 
-					if (result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty('shippingServiceCost')) {
+					if (result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty(
+							'shippingServiceCost')) {
 
-						Shipping = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].shippingServiceCost[0].__value__);
+						Shipping = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].shippingServiceCost[
+							0].__value__);
 
-						totalNumber = Number(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__) + Number(result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].shippingServiceCost[0].__value__);
-					}
-					else {
+						totalNumber = Number(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[
+							0].__value__) + Number(result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].shippingServiceCost[
+							0].__value__);
+					} else {
 
 						Shipping = $("<td>").text("$0.00");
 
-						totalNumber = Number(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__) + 0;
+						totalNumber = Number(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[
+							0].__value__) + 0;
 					}
 
 					var total = $("<td>").text(totalNumber.toFixed(2));
@@ -314,8 +322,12 @@
 
 				console.log(totals);
 				console.log(totalsRound);
-				totals.sort(function (a, b) { return a - b });
-				totalsRound.sort(function (a, b) { return a - b });
+				totals.sort(function (a, b) {
+					return a - b
+				});
+				totalsRound.sort(function (a, b) {
+					return a - b
+				});
 				console.log(totals);
 				console.log(totalsRound);
 
@@ -349,7 +361,9 @@
 				head.append(importantRow);
 
 				function createFreq(arry) {
-					var a = [], b = [], prev;
+					var a = [],
+						b = [],
+						prev;
 					console.log(arry);
 
 					for (var i = 0; i < arry.length; i++) {
@@ -394,8 +408,6 @@
 		}
 
 		getData();
-
-
 	</script>
 </body>
 

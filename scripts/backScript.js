@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var item = "anthropologie";
   var category = "63861";
   var totals = [];
@@ -18,14 +18,14 @@ $(document).ready(function() {
   var conditionNew = "&itemFilter(1).name=Condition&itemFilter(1).value=1000";
   var condition = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
   var clothing = false;
-  
+
   function modes(array) {
     if (!array.length) return [];
     var modeMap = {},
       maxCount = 0,
       modes = [];
 
-    array.forEach(function(val) {
+    array.forEach(function (val) {
       if (!modeMap[val]) modeMap[val] = 1;
       else modeMap[val]++;
 
@@ -40,7 +40,7 @@ $(document).ready(function() {
     return modes;
   }
 
-  $('input[type="checkbox"]').on("click", function() {
+  $('input[type="checkbox"]').on("click", function () {
     if (this.checked) {
       condition = conditionNew;
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#submit").on("click", function() {
+  $("#submit").on("click", function () {
     $(".twelveSon").children(".errorMsg").remove();
     $("#itemsTable").empty();
     if (clothing === true) {
@@ -66,14 +66,15 @@ $(document).ready(function() {
       if ($("#input").val() === "") {
         var errorDisplay = $("<p>");
         errorDisplay.addClass("errorMsg");
-     $(".twelveSon").append(errorDisplay.text("Please enter a search term."));
-         return;
-        };
+        $(".twelveSon").append(errorDisplay.text("Please enter a search term."));
+        return;
+      };
       item = $("#input").val();
       getBestBuyData();
     }
   });
-console.log($("#itemsTable").html())
+  console.log($("#itemsTable").html())
+
   function getBestBuyData() {
     queryURL =
       "https://api.bestbuy.com/v1/products((search=" +
@@ -85,7 +86,7 @@ console.log($("#itemsTable").html())
     $.ajax({
       url: queryURL,
       method: "GET",
-    }).then(function(response) {
+    }).then(function (response) {
       if (!('0' in response.products)) {
         var errorDisplay = $("<p>");
         errorDisplay.addClass("errorMsg");
@@ -96,8 +97,8 @@ console.log($("#itemsTable").html())
         var newRow = $("<tr>");
         var picture = $("<td>").html(
           "<img src=" +
-            response.products[i].image +
-            " alt='img' 'height=100px' width='100px'>"
+          response.products[i].image +
+          " alt='img' 'height=100px' width='100px'>"
         );
         var Title = $("<td>").text(response.products[i].name);
         var Price = $("<td>").text(response.products[i].regularPrice);
@@ -117,6 +118,7 @@ console.log($("#itemsTable").html())
       console.log(response);
     });
   }
+
   function getData() {
     //debugger;
     queryURL =
@@ -133,22 +135,26 @@ console.log($("#itemsTable").html())
     console.log(item);
     console.log(condition);
 
-    google.charts.load("current", { packages: ["bar"] });
+    google.charts.load("current", {
+      packages: ["bar"]
+    });
 
     function drawStuff() {
       var data = new google.visualization.DataTable();
 
-        data.addColumn('string', 'price');
-        data.addColumn('number', 'frequencyValue');
+      data.addColumn('string', 'price');
+      data.addColumn('number', 'frequencyValue');
 
-        // load data
+      // load data
       for (var j = 0; j < freq.length; j++) {
-          var row = [freq[j].toString(), freqVal[j]];
-          data.addRow(row);
-        }
+        var row = [freq[j].toString(), freqVal[j]];
+        data.addRow(row);
+      }
 
       var options = {
-        legend: { position: 'none' },
+        legend: {
+          position: 'none'
+        },
         chart: {
           title: 'Distribution Chart',
           subtitle: 'number of items sold at this pirce point, rounded to the nearest dollar'
@@ -165,13 +171,21 @@ console.log($("#itemsTable").html())
         },
         bars: 'horizontal', // Required for Material Bar Charts.
         series: {
-          0: { axis: 'freq' }, // Bind series 0 to an axis named 'distance'.
-          1: { axis: 'items' } // Bind series 1 to an axis named 'brightness'.
+          0: {
+            axis: 'freq'
+          }, // Bind series 0 to an axis named 'distance'.
+          1: {
+            axis: 'items'
+          } // Bind series 1 to an axis named 'brightness'.
         },
         axes: {
           x: {
-            freq: { label: 'Number of items sold' }, // Bottom x-axis.
-            items: { label: 'apparent magnitude' } // Top x-axis.
+            freq: {
+              label: 'Number of items sold'
+            }, // Bottom x-axis.
+            items: {
+              label: 'apparent magnitude'
+            } // Top x-axis.
           }
         },
         series: {
@@ -182,7 +196,7 @@ console.log($("#itemsTable").html())
       };
 
       var chart = new google.charts.Bar(document.getElementById("top_x_div"));
-      $("#graphTab").on("click", function(event) {
+      $("#graphTab").on("click", function (event) {
         event.preventDefault();
         chart.draw(data, options);
       });
@@ -192,64 +206,64 @@ console.log($("#itemsTable").html())
     $.ajax({
       url: queryURL,
       method: "GET",
-    }).then(function(response) {
+    }).then(function (response) {
       result = JSON.parse(response);
-      
-console.log(result);
 
-if (!('item' in result.findCompletedItemsResponse[0].searchResult[0])) {
-  queryURL = "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + item
-  $.ajax({
-    url : queryURL, 
-    method: "GET",
-  }).then(function(response) {
-    result = JSON.parse(response);
-    console.log(result);
-    var newWord = result.getSearchKeywordsRecommendationResponse[0].keywords;
-    var errorDisplay = $("<p>");
-  errorDisplay.addClass("errorMsg");
-  $(".twelveSon").append(errorDisplay.html("Sorry, your search returned 0 results. Did you mean <i>" + newWord + "</i>?"));
-  })
-  return;
-}
-console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
-      for ( var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
+      console.log(result);
+
+      if (!('item' in result.findCompletedItemsResponse[0].searchResult[0])) {
+        queryURL = "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + item
+        $.ajax({
+          url: queryURL,
+          method: "GET",
+        }).then(function (response) {
+          result = JSON.parse(response);
+          console.log(result);
+          var newWord = result.getSearchKeywordsRecommendationResponse[0].keywords;
+          var errorDisplay = $("<p>");
+          errorDisplay.addClass("errorMsg");
+          $(".twelveSon").append(errorDisplay.html("Sorry, your search returned 0 results. Did you mean <i>" + newWord + "</i>?"));
+        })
+        return;
+      }
+      console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
+      for (var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
           "<img src=" +
-            result.findCompletedItemsResponse[0].searchResult[0].item[i]
-              .galleryURL +
-            "alt='img'>"
+          result.findCompletedItemsResponse[0].searchResult[0].item[i]
+          .galleryURL +
+          "alt='img'>"
         );
         var Title = $("<td>").text(
           result.findCompletedItemsResponse[0].searchResult[0].item[i].title
         );
         var Price = $("<td>").text(
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
-            .sellingStatus[0].currentPrice[0].__value__
+          .sellingStatus[0].currentPrice[0].__value__
         );
         Title.addClass("boxers");
         newRow.append(picture);
         newRow.append(Title);
         newRow.append(Price);
-        newRow.addClass("panties");
+        newRow.addClass("recentTR");
 
         if (
           result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty("shippingServiceCost")
         ) {
           Shipping = $("<td>").text(
             result.findCompletedItemsResponse[0].searchResult[0].item[i]
-              .shippingInfo[0].shippingServiceCost[0].__value__
+            .shippingInfo[0].shippingServiceCost[0].__value__
           );
 
           totalNumber =
             Number(
               result.findCompletedItemsResponse[0].searchResult[0].item[i]
-                .sellingStatus[0].currentPrice[0].__value__
+              .sellingStatus[0].currentPrice[0].__value__
             ) +
             Number(
               result.findCompletedItemsResponse[0].searchResult[0].item[i]
-                .shippingInfo[0].shippingServiceCost[0].__value__
+              .shippingInfo[0].shippingServiceCost[0].__value__
             );
         } else {
           Shipping = $("<td>").text("$0.00");
@@ -257,7 +271,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
           totalNumber =
             Number(
               result.findCompletedItemsResponse[0].searchResult[0].item[i]
-                .sellingStatus[0].currentPrice[0].__value__
+              .sellingStatus[0].currentPrice[0].__value__
             ) + 0;
         }
 
@@ -271,10 +285,13 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
         body.append(newRow);
       }
       item = "";
+
       function createFreq(arry) {
-        var a = [], b = [], prev;
-        arry.sort(function (a, b) { 
-          return a - b; 
+        var a = [],
+          b = [],
+          prev;
+        arry.sort(function (a, b) {
+          return a - b;
         });
         console.log(arry);
 
@@ -305,7 +322,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
   }
 
 
-  $("#menSelect").on("change", function() {
+  $("#menSelect").on("change", function () {
     $("#input").val("");
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
@@ -314,7 +331,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
     document.getElementById("input").disabled = false;
     clothing = true;
   });
-  $("#womenSelect").on("change", function() {
+  $("#womenSelect").on("change", function () {
     $("#input").val("");
     $("#menSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
@@ -323,7 +340,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
     document.getElementById("input").disabled = false;
     clothing = true;
   });
-  $("#otherSelect").on("change", function() {
+  $("#otherSelect").on("change", function () {
     $("#input").val("");
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
@@ -333,7 +350,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
     document.getElementById("input").disabled = false;
 
   });
-  $("#electronicsSelect").on("change", function() {
+  $("#electronicsSelect").on("change", function () {
     $("#input").val("");
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);

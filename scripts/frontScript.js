@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $(".mWTab").hide();
   $(".electOTab").hide();
   $(".brandTab").show();
@@ -14,21 +14,21 @@ $(document).ready(function() {
     storageBucket: "",
     messagingSenderId: "53201548843",
   };
-  
+
   firebase.initializeApp(config);
   var db = firebase.database();
-  
-  
+
+
   var clothingNonClothing = "clothing";
   var mensWomens = "mens";
   var category = "t-shirt";
 
-  $("#graphTab").on("click", function(event) {
+  $("#graphTab").on("click", function (event) {
     event.preventDefault();
     $("#top_x_div").toggle();
   });
 
-  $("#clothingTab").on("click", function(event) {
+  $("#clothingTab").on("click", function (event) {
     event.preventDefault();
     document.getElementById("input").disabled = true;
     $("#menSelect").prop("selectedIndex", 0);
@@ -41,7 +41,7 @@ $(document).ready(function() {
     $("#nonClothingTab").removeAttr("style");
   });
 
-  $("#nonClothingTab").on("click", function(event) {
+  $("#nonClothingTab").on("click", function (event) {
     event.preventDefault();
     document.getElementById("input").disabled = true;
     $("#menSelect").prop("selectedIndex", 0);
@@ -54,36 +54,36 @@ $(document).ready(function() {
     $("#clothingTab").removeAttr("style");
   });
 
-  $("#usedTab").on("click", function(event) {
+  $("#usedTab").on("click", function (event) {
     event.preventDefault();
     $("#graphTab").text("Used Graph");
   });
-  $("#newTab").on("click", function(event) {
+  $("#newTab").on("click", function (event) {
     event.preventDefault();
     $("#graphTab").text("New Graph");
   });
-  $("#listTab").on("click", function(event) {
+  $("#listTab").on("click", function (event) {
     event.preventDefault();
     $("#displayItems").toggle();
   });
-  $("#recentTab").on("click", function(event) {
+  $("#recentTab").on("click", function (event) {
     event.preventDefault();
     $(".recentItem").toggle();
   });
 
-  $(document).on("click", ".boxers", function(event) {
+  $(document).on("click", ".boxers", function (event) {
     event.preventDefault();
     var clickItem = $(this).html();
     db.ref("recentItems").push({
-      thisAll: $(this).parent(".panties").html(),
+      thisAll: $(this).parent(".recentTR").html(),
     });
     document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0; 
+    document.documentElement.scrollTop = 0;
   });
-  db.ref("recentItems").on("child_added", function(snap) {
+  db.ref("recentItems").on("child_added", function (snap) {
     console.log(snap.val().thisAll);
     $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
-})
+  });
 
   // Created for an Articles on:
   // https://www.html5andbeyond.com/bubbling-text-effect-no-canvas-required/
@@ -122,8 +122,7 @@ $(document).ready(function() {
         'opacity': '-=0.7'
       }, 3000, function () {
         $(this).remove();
-      }
-      );
+      });
 
 
     }, 350);

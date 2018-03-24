@@ -21,13 +21,11 @@
         </div>
     </header>
 
-
     <div class="container">
-        <div class="row">
+        <div class="row cntr">
             <button id="nonClothingTab" class="button-primary themed-button">Non-Clothing</button>
             <button id="clothingTab" class="button-primary themed-button">Clothing</button>
         </div>
-
 
         <!-- clothing row -->
         <div class="row">
@@ -160,110 +158,86 @@
 
         <div class="row brandTab">
             <div class="twelve columns">
-                <!--                <button id="brandsTab" class="button-primary themed-button">Keyword</button> -->
 
-                <div class="leo_test">
-                    <div class="third">
-                        <input id="input" class="themed-input" type="text">
-                    </div>
-                    <div class="third">
-                        <button id="submit" class="themed-button">Keyword</button>
-                    </div>
-                    <div class="third-special">
-                        <div class="third-special-child">
-                            <input id="cbx" type="checkbox" class="test1">
-                            <label class="cbx" for="cbx"></label>
-                        </div>
-                        <div class="third-special-child">
-                            <label class="lbl" for="cbx">New
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <!-- 
-                <div class="leo_test_div_3">
+                <div class="four columns third">
                     <input id="input" class="themed-input" type="text">
                 </div>
-                <div class="leo_test_div_3">
-                    <button id="submit brandsTab" class="themed-button">Keyword</button>
+                <div class="four columns third">
+                    <button id="submit" class="themed-button">Search</button>
                 </div>
-                <div class="leo_test_div_6">
-                    <input id="cbx" type="checkbox" class="hidden">
-                    <label class="cbx" for="cbx"></label>
-                </div>
-                <div class="leo_test_div_6">
-                    <label class="lbl" for="cbx">New</label>
-                </div> -->
-                <!--                <div class="twelve columns">
-                    <div class="cntr">
-                        <input id="input" class="themed-input" type="text">
-                        <button id="submit" class="themed-button">Submit</button>
-                        <input id="cbx" type="checkbox" class="hidden">
-                        <label class="cbx" for="cbx"></label>
-                        <label class="lbl" for="cbx">New</label>
-                    </div>
+                <div id="cbxColumn" class="four columns third">
+
+                    <input id="cbx" type="checkbox">
+
+                    <label id="lbl" for="cbx">New</label>
                 </div>
             </div>
-        -->
-                <div class="row">
-                    <div class="twelve columns">
-                        <div class="twelveSon"></div>
-                        <button id="graphTab" class="button-primary themed-button">Graph</button>
-                        <div id="hideYoKids">
-                            <div id="top_x_div" style="width: 100%; height: 150vh;"></div>
-                        </div>
-                    </div>
-                    <div class="twelve columns">
+        </div>
 
-                        <button id="listTab" class="button-primary themed-button">List</button>
+        <div class="row">
+            <div class="twelve columns">
+                <div class="twelveSon"></div>
+                <button id="graphTab" class="button-primary themed-button">Graph</button>
+                <div id="hideYoKids">
+                    <div id="top_x_div" style="width: 100%; height: 150vh;"></div>
+                </div>
+            </div>
+            <div class="twelve columns">
 
-                        <table class="table themed-table" id="displayItems">
-                            <thead>
-                                <tr>
-                                    <th>Picture</th>
-                                    <th>Item</th>
-                                    <th>Price</th>
-                                    <th>Shipping</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody id="itemsTable">
-                            </tbody>
-                        </table>
-                    </div>
+                <button id="listTab" class="button-primary themed-button">List</button>
 
-                    <div class="twelve columns">
+                <table class="table themed-table" id="displayItems">
+                    <thead>
+                        <tr>
+                            <th>Picture</th>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Shipping</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTable">
+                    </tbody>
+                </table>
+            </div>
 
-                        <button id="recentTab" class="button-primary themed-button">Recently Priced</button>
+            <div class="twelve columns">
 
-                    </div>
+                <button id="recentTab" class="button-primary themed-button">Recently Priced</button>
+
+            </div>
+
+            <div class="row">
+                <div class="twelve columns">
                     <p class="themed-table recentItem">For items to appear here please click the title of chosen item.</p>
-
-                    <table class=" table themed-table recentItem">
-                        <thead>
-                            <tr>
-                                <th>Picture</th>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Shipping</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="recentTable" class="themed-table">
-                        </tbody>
-                    </table>
                 </div>
-
             </div>
 
+            <table class="table themed-table recentItem">
+                <thead>
+                    <tr>
+                        <th>Picture</th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Shipping</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="recentTable" class="themed-table">
+                </tbody>
+            </table>
+        </div>
 
-            <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    </div>
 
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script src="./scripts/frontScript.js"></script>
-            <script src="./scripts/backScript.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="./scripts/frontScript.js"></script>
+    <script src="./scripts/backScript.js"></script>
 
 </body>
 

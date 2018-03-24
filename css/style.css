@@ -5,27 +5,29 @@ exported save: Palette E.html
 */
 
 /* bubbleing header by html5andblog on CodePen */
+
 .bubbles {
-    display: inline-block;
-    font-family: arial;
-    position: relative;
+  display: inline-block;
+  font-family: arial;
+  position: relative;
 }
 
 .bubbles h1 {
-    position: relative;
-    margin: 1em 0 0;
-    font-family: 'Luckiest Guy', cursive;
-    color: #fff;
-    z-index: 2;
+  position: relative;
+  margin: 1em 0 0;
+  font-family: 'Luckiest Guy', cursive;
+  color: #fff;
+  z-index: 2;
 }
 
 .individual-bubble {
-    position: absolute;
-    border-radius: 100%;
-    bottom: 10px;
-    background-color: #fff;
-    z-index: 1;
+  position: absolute;
+  border-radius: 100%;
+  bottom: 10px;
+  background-color: #fff;
+  z-index: 1;
 }
+
 /* End of Bubbling Header */
 
 /* Begin Jelly Checkbox by Andreas Storm on CodePen 
@@ -36,39 +38,8 @@ to our our own style modifications to match
    our color theme, but need to learn how to adapt it 
    when using skeleton css.)
 */
-.test1 {
-    display: none !important;
-}
 
-.leo_test{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.third {
-  width: 30%;
-}
-.third-special{
-  width:30%;
-  margin-top: 5px;
-  padding-top:6px;
-  display: flex;
-  justify-content: space-between
-}
-.third-special-child{
-  width: 45%;
-}
-
-.leo_test_div_3{
-    width: 30%;
-}
-
-.leo_test_div_6{
-    width: 15%;
-}
-
-.cbx {
+/* .cbx {
   position: relative;
   top: 1px;
   width: 17px;
@@ -79,6 +50,7 @@ to our our own style modifications to match
   transition: background 0.1s ease;
   cursor: pointer;
 }
+
 .cbx:after {
   content: '';
   position: absolute;
@@ -92,222 +64,166 @@ to our our own style modifications to match
   border-bottom: 2px solid #fff;
   transition: all 0.3s ease;
   transition-delay: 0.15s;
-}
-.lbl {
+} */
+
+#lbl {
   margin-left: 5px;
-  vertical-align: middle;
+  margin-top: 7px;
   cursor: pointer;
   font-family: 'Luckiest Guy', cursive;
   color: #fff;
+  display: inline;
+  font-size: 1.5em;
+  margin: auto;
+  height: 100%;
+}
 
+#cbx {
+  display: inline;
+  margin: auto;
+  vertical-align: 5px;
+  transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  margin: 10px;
 }
-#cbx:checked ~ .cbx {
-  border-color: transparent;
-  background: #48EB6C;
-  animation: jelly 0.6s ease;
+
+#cbxColumn {
+  line-height: 48px;
 }
-#cbx:checked ~ .cbx:after {
-  opacity: 1;
-  transform: rotate(45deg) scale(1);
-}
-/*
+
 .cntr {
-  position: absolute;
-  top: 50%;
-  left: 0;
+  margin: auto;
   width: 100%;
-  text-align: left;
-}*/
-
-@-moz-keyframes jelly {
-  from {
-    transform: scale(1, 1);
-  }
-  30% {
-    transform: scale(1.25, 0.75);
-  }
-  40% {
-    transform: scale(0.75, 1.25);
-  }
-  50% {
-    transform: scale(1.15, 0.85);
-  }
-  65% {
-    transform: scale(0.95, 1.05);
-  }
-  75% {
-    transform: scale(1.05, 0.95);
-  }
-  to {
-    transform: scale(1, 1);
-  }
-}
-@-webkit-keyframes jelly {
-  from {
-    transform: scale(1, 1);
-  }
-  30% {
-    transform: scale(1.25, 0.75);
-  }
-  40% {
-    transform: scale(0.75, 1.25);
-  }
-  50% {
-    transform: scale(1.15, 0.85);
-  }
-  65% {
-    transform: scale(0.95, 1.05);
-  }
-  75% {
-    transform: scale(1.05, 0.95);
-  }
-  to {
-    transform: scale(1, 1);
-  }
-}
-@-o-keyframes jelly {
-  from {
-    transform: scale(1, 1);
-  }
-  30% {
-    transform: scale(1.25, 0.75);
-  }
-  40% {
-    transform: scale(0.75, 1.25);
-  }
-  50% {
-    transform: scale(1.15, 0.85);
-  }
-  65% {
-    transform: scale(0.95, 1.05);
-  }
-  75% {
-    transform: scale(1.05, 0.95);
-  }
-  to {
-    transform: scale(1, 1);
-  }
-}
-@keyframes jelly {
-  from {
-    transform: scale(1, 1);
-  }
-  30% {
-    transform: scale(1.25, 0.75);
-  }
-  40% {
-    transform: scale(0.75, 1.25);
-  }
-  50% {
-    transform: scale(1.15, 0.85);
-  }
-  65% {
-    transform: scale(0.95, 1.05);
-  }
-  75% {
-    transform: scale(1.05, 0.95);
-  }
-  to {
-    transform: scale(1, 1);
-  }
-}
-/* End Jelly Checkbox */
-
-
-*{
-    /* note that dashed border is for dev layout only 
-border: #C24BE4 dashed 1px; */
-text-align:center;
 }
 
-body{
-    background-color: rgb(231, 206, 238);
+* {
+  /* note that dashed border is for dev layout only */
+  /* border: #C24BE4 dashed 1px; */
+  text-align: center;
+}
+
+body {
+  background-color: rgb(231, 206, 238);
 }
 
 td {
-    width: 25%;
+  width: 25%;
+  color: #50A0E2;
+  background-color: #A3CCEE;
+  border-color: #5188B5;
 }
 
-#nonClothingTab, 
+#nonClothingTab,
 #clothingTab {
-    box-sizing:border-box;
-    width:49.7%;
-    height:110%;
-    border-radius: 0%;
+  box-sizing: border-box;
+  width: 49.7%;
+  height: 110%;
+  border-radius: 0%;
+  color: #50A0E2;
+  background-color: #A3CCEE;
+  border-color: #5188B5;
 }
 
-.themed-button {
-    color: #50A0E2 !important;
-    background-color: #A3CCEE !important;
-    border-color: #5188B5 !important;
-    width: 100%;
+#submit,
+#graphTab,
+#listTab,
+#recent,
+#recentTab {
+  color: #50A0E2;
+  background-color: #A3CCEE;
+  border-color: #5188B5;
+  width: 100%;
 }
 
-.themed-button:hover {
-    color: #50A0E2 !important;    
-    background-color: #A0F4B3 !important;
-    border-color: #53CC6E !important;
-    border-width: 2px; 
+#nonClothingTab:hover,
+#clothingTab:hover,
+#submit:hover,
+#graphTab:hover,
+#listTab:hover,
+#recentTab:hover,
+#recentTab:hover {
+  color: #50A0E2;
+  background-color: #A0F4B3;
+  border-color: #53CC6E;
+  border-width: 2px;
 }
 
-.themed-select {
-    color: #50A0E2 !important;
-    background-color: #A3CCEE !important;
-    border-color: #5188B5 !important;
+#womenSelect,
+#menSelect,
+#electronicsSelect,
+#otherSelect {
+  color: #50A0E2;
+  background-color: #A3CCEE;
+  border-color: #5188B5;
 }
 
-.themed-select:hover {
-    color: #50A0E2 !important;
-    background-color: #A0F4B3 !important;
-    border-color: #53CC6E !important;
-    border-width: 2px;
+#womenSelect:hover,
+#menSelect:hover,
+#electronicsSelect:hover,
+#otherSelect:hover {
+  color: #50A0E2;
+  background-color: #A0F4B3;
+  border-color: #53CC6E;
+  border-width: 2px;
 }
 
-
-.themed-input {
-    text-align: left;
-    color: #50A0E2 !important;
-    background-color: #A0F4B3 !important;
-    border-color: #9BC9A6 !important;
+#input {
+  text-align: left;
+  color: #50A0E2;
+  background-color: #A0F4B3;
+  border-color: #9BC9A6;
+  width: 100%;
 }
 
-.themed-input:hover {
-    text-align: left;
-    color: #50A0E2 !important;
-    background-color: #A0F4B3 !important;
-    border-color: #48EB6C !important;
-    border-width: 2px;
+#input:hover {
+  text-align: left;
+  color: #50A0E2;
+  background-color: #A0F4B3;
+  border-color: #48EB6C;
+  border-width: 2px;
+}
+
+#input:disabled {
+  background-color: rgb(204, 226, 208);
+  /* border:; */
 }
 
 .themed-table {
-    color: #5188B5;
-    background-color: rgb(197, 221, 240);
-    border-color: #50A0E2;
-    border-width: 2px;
+  color: #5188B5;
+  background-color: rgb(197, 221, 240);
+  border-color: #50A0E2;
+  border-width: 2px;
 }
 
 tbody {
-    text-align:center;
+  text-align: center;
 }
 
 .boxers:hover {
-    color: #53CC6E;
-    font: outline;
-    font-weight: bolder;
+  color: #53CC6E;
+  font: outline;
+  font-weight: bolder;
 }
 
 .boxers {
-    border:none;
+  border: none;
+}
+
+.boxers:hover {
+  cursor: pointer;
 }
 
 .hideYoKids {
-    visibility: hidden
+  visibility: hidden
 }
 
 @media only screen and (max-width: 860px) {
   #nonClothingTab,
   #clothingTab {
-    width: 47%;
+    width: 49.5%;
   }
 }
 
@@ -345,5 +261,21 @@ tbody {
 @media only screen and (max-width: 550px) {
   .one-half.column {
     width: 50%;
+  }
+  .four.column.third {
+    width: 30.333333%;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  .one-half.column {
+    width: 50%;
+  }
+  .four.column.third {
+    width: 30.333333%;
+  }
+  #nonClothingTab,
+  #clothingTab {
+    width: 49%;
   }
 }
