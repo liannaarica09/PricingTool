@@ -12,6 +12,7 @@ $(document).ready(function () {
   var freqVal;
   var p = 1;
   var result = {};
+  var runningTally;
 
   var categoryId;
   var conditionUsed = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
@@ -198,7 +199,7 @@ $(document).ready(function () {
             axis: 'items'
           } // Bind series 1 to an axis named 'brightness'.
         },
-        axes: {
+        axis: {
           x: {
             freq: {
               label: 'Number of items sold'
@@ -305,7 +306,9 @@ $(document).ready(function () {
       item = "";
 
       function createFreq(arry) {
-        arry.sort();
+        arry.sort(function (a, b) {
+          return a - b;
+        });
         var a = [];
         var b = [];
         var prev;
