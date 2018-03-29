@@ -68,12 +68,12 @@ $(document).ready(function () {
         errorDisplay.addClass("errorMsg");
         $(".twelveSon").append(errorDisplay.text("Please enter a search term."));
         return;
-      };
+      }
       item = $("#input").val();
       getBestBuyData();
     }
   });
-  console.log($("#itemsTable").html())
+  console.log($("#itemsTable").html());
 
   function getBestBuyData() {
     queryURL =
@@ -93,7 +93,7 @@ $(document).ready(function () {
         $(".twelveSon").append(errorDisplay.text("Sorry, your search returned 0 results. Please try again"));
         return;
       }
-      for (let i = 0; i < response.products.length; i++) {
+      for (i = 0; i < response.products.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
           "<img src=" +
@@ -113,6 +113,26 @@ $(document).ready(function () {
         newRow.append(Shipping);
         newRow.append(Total);
         body.append(newRow);
+
+        if (totalNumber.toFixed(2) > Number(highest)) {
+          console.log(highest);
+          console.log(totalNumber);
+          highest = totalNumber.toFixed(2);
+          console.log("New high price: " + totalNumber.toFixed(2));
+        }
+
+        if (totalNumber.toFixed(2) < Number(lowest)) {
+          console.log(lowest);
+          console.log(totalNumber);
+          lowest = totalNumber.toFixed(2);
+          console.log("New low price: " + totalNumber.toFixed(2));
+        }
+
+        totals.push(totalNumber);
+        totalsRound.push(Math.round(totalNumber));
+        //   console.log(totalNumber);
+        runningTally += totalNumber;
+        //   console.log(runningTally.toFixed(2));
       }
       item = "";
       console.log(response);
@@ -186,9 +206,7 @@ $(document).ready(function () {
             items: {
               label: 'apparent magnitude'
             } // Top x-axis.
-          }
-        },
-        series: {
+          },
           0: {
             color: '#3CC95B'
           }
@@ -212,7 +230,7 @@ $(document).ready(function () {
       console.log(result);
 
       if (!('item' in result.findCompletedItemsResponse[0].searchResult[0])) {
-        queryURL = "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + item
+        queryURL = "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + item;
         $.ajax({
           url: queryURL,
           method: "GET",
@@ -223,7 +241,7 @@ $(document).ready(function () {
           var errorDisplay = $("<p>");
           errorDisplay.addClass("errorMsg");
           $(".twelveSon").append(errorDisplay.html("Sorry, your search returned 0 results. Did you mean <i>" + newWord + "</i>?"));
-        })
+        });
         return;
       }
       console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
@@ -287,28 +305,25 @@ $(document).ready(function () {
       item = "";
 
       function createFreq(arry) {
-        var a = [],
-          b = [],
-          prev;
-        arry.sort(function (a, b) {
-          return a - b;
-        });
+        arry.sort();
+        var a = [];
+        var b = [];
+        var prev;
         console.log(arry);
 
-        for (var k = 0; k < arry.length; k++) {
-          if (arry[k] !== prev) {
-            a.push(arry[k]);
+        for (var i = 0; i < arry.length; i++) {
+          if (arry[i] !== prev) {
+            a.push(arry[i]);
             b.push(1);
           } else {
             b[b.length - 1]++;
           }
-          prev = arry[k];
+          prev = arry[i];
         }
 
         freq = a;
-        console.log(freq);
         freqVal = b;
-        console.log(freqVal);
+        console.log(arry);
       }
 
       createFreq(totalsRound);
@@ -359,4 +374,5 @@ $(document).ready(function () {
     clothing = false;
     document.getElementById("input").disabled = false;
   });
+
 });
