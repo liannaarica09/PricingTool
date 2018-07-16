@@ -125,7 +125,7 @@ $(document).ready(function () {
   function getData() {
     //debugger;
     queryURL =
-      "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" +
+      "https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" +
       item +
       "&itemFilter(0).name=SoldItemsOnly&itemFilter(0).value=true" +
       condition +
@@ -233,7 +233,7 @@ $(document).ready(function () {
         var picture = $("<td>").html(
           "<img src=" +
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
-          .galleryURL +
+            .galleryURL +
           "alt='img'>"
         );
         var Title = $("<td>").text(
@@ -241,7 +241,7 @@ $(document).ready(function () {
         );
         var Price = $("<td>").text(
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
-          .sellingStatus[0].currentPrice[0].__value__
+            .sellingStatus[0].currentPrice[0].__value__
         );
         Title.addClass("boxers");
         newRow.append(picture);
@@ -260,17 +260,17 @@ $(document).ready(function () {
         ) {
           Shipping = $("<td>").text(
             result.findCompletedItemsResponse[0].searchResult[0].item[i]
-            .shippingInfo[0].shippingServiceCost[0].__value__
+              .shippingInfo[0].shippingServiceCost[0].__value__
           );
 
           totalNumber =
             Number(
               result.findCompletedItemsResponse[0].searchResult[0].item[i]
-              .sellingStatus[0].currentPrice[0].__value__
+                .sellingStatus[0].currentPrice[0].__value__
             ) +
             Number(
               result.findCompletedItemsResponse[0].searchResult[0].item[i]
-              .shippingInfo[0].shippingServiceCost[0].__value__
+                .shippingInfo[0].shippingServiceCost[0].__value__
             );
         } else {
           Shipping = $("<td>").text("$0.00");
@@ -278,7 +278,7 @@ $(document).ready(function () {
           totalNumber =
             Number(
               result.findCompletedItemsResponse[0].searchResult[0].item[i]
-              .sellingStatus[0].currentPrice[0].__value__
+                .sellingStatus[0].currentPrice[0].__value__
             ) + 0;
         }
 
