@@ -6,6 +6,20 @@
     <title>Pricing Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122455397-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-122455397-1');
+    </script>
+
+
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/skeleton.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css">
@@ -173,27 +187,31 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="twelve columns">
+                <table id="tableOne" class="table themed-table">
+                    <thead>
+                        <tr>
+                            <th># of Results</th>
+                            <th>Range</th>
+                            <th>Mean</th>
+                            <th>Median</th>
+                            <th>Mode</th>
+                            <th>Rounded Mode</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pricingTable">
+                        <!-- Insert price rows here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
         <div class="row">
             <div class="twelve columns">
                 <div class="twelveSon"></div>
                 <button id="graphTab" class="button-primary themed-button">Graph</button>
                 <div id="hideYoKids">
-                    <table id="tableOne" class="table">
-                        <thead>
-                            <tr>
-                                <th># of Results</th>
-                                <th>Range</th>
-                                <th>Mean</th>
-                                <th>Median</th>
-                                <th>Mode</th>
-                                <th>Rounded Mode</th>
-                            </tr>
-                        </thead>
-                        <tbody id="pricingTable">
-                            <!-- Insert price rows here -->
-                        </tbody>
-                    </table>
                     <div id="top_x_div" style="width: 100%; height: 150vh;"></div>
                 </div>
             </div>

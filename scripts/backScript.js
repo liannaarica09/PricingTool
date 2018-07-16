@@ -1,6 +1,8 @@
 $(document).ready(function () {
   var item = "anthropologie";
   var category = "63861";
+  var highest = 0;
+  var lowest = 100000000000;
   var totals = [];
   var totalsRound = [];
   var Shipping = "";
@@ -12,7 +14,7 @@ $(document).ready(function () {
   var freqVal;
   var p = 1;
   var result = {};
-  var runningTally;
+  var runningTally = 0;
 
   var categoryId;
   var conditionUsed = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
@@ -114,26 +116,6 @@ $(document).ready(function () {
         newRow.append(Shipping);
         newRow.append(Total);
         body.append(newRow);
-
-        if (totalNumber.toFixed(2) > Number(highest)) {
-          console.log(highest);
-          console.log(totalNumber);
-          highest = totalNumber.toFixed(2);
-          console.log("New high price: " + totalNumber.toFixed(2));
-        }
-
-        if (totalNumber.toFixed(2) < Number(lowest)) {
-          console.log(lowest);
-          console.log(totalNumber);
-          lowest = totalNumber.toFixed(2);
-          console.log("New low price: " + totalNumber.toFixed(2));
-        }
-
-        totals.push(totalNumber);
-        totalsRound.push(Math.round(totalNumber));
-        //   console.log(totalNumber);
-        runningTally += totalNumber;
-        //   console.log(runningTally.toFixed(2));
       }
       item = "";
       console.log(response);
@@ -267,6 +249,12 @@ $(document).ready(function () {
         newRow.append(Price);
         newRow.addClass("recentTR");
 
+        totals.push(totalNumber);
+        totalsRound.push(Math.round(totalNumber));
+        console.log(totalNumber);
+        runningTally += totalNumber;
+        // console.log(runningTally.toFixed(2));
+
         if (
           result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty("shippingServiceCost")
         ) {
@@ -329,8 +317,61 @@ $(document).ready(function () {
         console.log(arry);
       }
 
+      if (totalNumber.toFixed(2) > Number(highest)) {
+        console.log(highest);
+        console.log(totalNumber);
+        highest = totalNumber.toFixed(2);
+        console.log("New high price: " + totalNumber.toFixed(2));
+      }
+
+      if (totalNumber.toFixed(2) < Number(lowest)) {
+        console.log(lowest);
+        console.log(totalNumber);
+        lowest = totalNumber.toFixed(2);
+        console.log("New low price: " + totalNumber.toFixed(2));
+      }
+
+      // math stuff
+      totals.sort(function (a, b) {
+        return a - b;
+      });
+      totalsRound.sort(function (a, b) {
+        return a - b;
+      });
+      // console.log(totals);
+      // console.log(totalsRound);
+
       createFreq(totalsRound);
 
+      var lowMiddle = Math.floor((totals.length - 1) / 2);
+      console.log("lowMiddle " + lowMiddle);
+      var highMiddle = Math.ceil((totals.length - 1) / 2);
+      console.log("highMiddle " + highMiddle);
+      var mean = parseFloat(runningTally).toFixed(2) / result.findCompletedItemsResponse[0].searchResult[0].item.length;
+      console.log("Mean: " + parseFloat(runningTally).toFixed(2) + "/" + result.findCompletedItemsResponse[0].searchResult[0].item.length + " = " + mean);
+      var median = (totals[lowMiddle] + totals[highMiddle]) / 2;
+      console.log("median " + median);
+
+      var importantRow = $("<tr>");
+
+      var priceRange = $("<td>").text(lowest + "-" + highest);
+      var meanPrice = $("<td>").text(mean.toFixed(2));
+      var medianPrice = $("<td>").text(median.toFixed(2));
+      var modePrice = $("<td>").text(modes(totals));
+      var roundedMode = $("<td>").text(modes(totalsRound));
+      var numberOfItems = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item.length);
+
+      importantRow.append(numberOfItems);
+      importantRow.append(priceRange);
+      importantRow.append(meanPrice);
+      importantRow.append(medianPrice);
+      importantRow.append(modePrice);
+      importantRow.append(roundedMode);
+      $("#pricingTable").append(importantRow);
+      $("#tableOne").attr("style", "display:block");
+
+
+      createFreq(totalsRound);
       drawStuff();
 
       $(window).resize(function () {
