@@ -228,15 +228,15 @@ tbody {
 }
 
 @media only screen and (max-width: 740px) {
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
+  #displayItems table,
+  #displayItems thead,
+  #displayItems tbody,
+  #displayItems th,
+  #displayItems td,
+  #displayItems tr {
     display: block;
   }
-  thead tr {
+  #displayItems thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
@@ -245,6 +245,7 @@ tbody {
     border: 1px solid #ccc;
     margin: auto;
   }
+  th,
   td {
     /* Behave  like a "row" */
     border: none;
