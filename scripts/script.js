@@ -22,12 +22,12 @@ $(document).ready(function () {
     var condition = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
     var clothing = false;
 
+    google.charts.load("current", {
+        packages: ["bar"]
+    });
+
     //drawing the chart 
     function drawStuff() {
-        google.charts.load("current", {
-            packages: ["bar"]
-        });
-
         var data = new google.visualization.DataTable();
 
         data.addColumn('string', 'price');
