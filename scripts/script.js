@@ -8,8 +8,8 @@ $(document).ready(function () {
     var Shipping = "";
     var totalNumber = "";
     var queryURL = "";
-    // var body = $("#itemsTable");
-    // var head = $("#pricingTable");
+    var body = $("#itemsTable");
+    var head = $("#pricingTable");
     var freq;
     var freqVal;
     var p = 1;
@@ -214,22 +214,6 @@ $(document).ready(function () {
             //clear search
             item = "";
 
-            //if total number is higher than current highest number replace it
-            if (totalNumber.toFixed(2) > Number(highest)) {
-                console.log(highest);
-                console.log(totalNumber);
-                highest = totalNumber.toFixed(2);
-                console.log("New high price: " + totalNumber.toFixed(2));
-            }
-
-            //if totaol number lower than current lowest number replace it
-            if (totalNumber.toFixed(2) < Number(lowest)) {
-                console.log(lowest);
-                console.log(totalNumber);
-                lowest = totalNumber.toFixed(2);
-                console.log("New low price: " + totalNumber.toFixed(2));
-            }
-
             // sort totals
             totals.sort(function (a, b) {
                 return a - b;
@@ -353,6 +337,8 @@ $(document).ready(function () {
     function makeTable(results) {
         //loop through all returned items and for each one:
         for (var i = 0; i < results.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
+
+
             //make a new row, image, title and price. Append these to the row and add class.
             var newRow = $("<tr>");
             var picture = $("<td>").html(
@@ -400,6 +386,23 @@ $(document).ready(function () {
                     ) + 0;
             }
 
+            //if total number is higher than current highest number replace it
+            if (totalNumber.toFixed(2) > Number(highest)) {
+                console.log(highest + " is lower than");
+                console.log(totalNumber);
+                highest = totalNumber.toFixed(2);
+                console.log("New high price: " + totalNumber.toFixed(2));
+            }
+
+            //if totaol number lower than current lowest number replace it
+            if (totalNumber.toFixed(2) < Number(lowest)) {
+                console.log(lowest = " is higher than");
+                console.log(totalNumber);
+                lowest = totalNumber.toFixed(2);
+                console.log("New low price: " + totalNumber.toFixed(2));
+            }
+
+
             //push price to totals and rounder total. Add to running tally of totals.
             console.log(totalNumber);
             runningTally += totalNumber;
@@ -414,5 +417,26 @@ $(document).ready(function () {
             newRow.append(total);
             body.append(newRow);
         }
+    }
+
+    function modes(array) {
+        if (!array.length) return [];
+        var modeMap = {},
+            maxCount = 0,
+            modes = [];
+
+        array.forEach(function (val) {
+            if (!modeMap[val]) modeMap[val] = 1;
+            else modeMap[val]++;
+
+            if (modeMap[val] > maxCount) {
+                modes = [val];
+                maxCount = modeMap[val];
+            } else if (modeMap[val] === maxCount) {
+                modes.push(val);
+                maxCount = modeMap[val];
+            }
+        });
+        return modes;
     }
 });
