@@ -19,9 +19,9 @@ $(document).ready(function () {
   var db = firebase.database();
 
 
-  var clothingNonClothing = "clothing";
-  var mensWomens = "mens";
-  var category = "t-shirt";
+  // var clothingNonClothing = "clothing";
+  // var mensWomens = "mens";
+  // var category = "t-shirt";
 
   $("#graphTab").on("click", function (event) {
     event.preventDefault();

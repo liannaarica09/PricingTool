@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  var item = "anthropologie";
-  var category = "63861";
+  var item = "";
+  var category = "";
   var highest = 0;
   var lowest = 100000000000;
   var totals = [];
@@ -63,7 +63,7 @@ $(document).ready(function () {
     if (clothing === true) {
       item = $("#input").val();
       console.log(item);
-      getData();
+      getEbayData();
     }
     if (clothing === false) {
       if ($("#input").val() === "") {
