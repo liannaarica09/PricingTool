@@ -97,6 +97,7 @@ to our our own style modifications to match
 .cntr {
   margin: auto;
   width: 100%;
+  height: 200%;
 }
 
 * {
@@ -116,15 +117,54 @@ td {
   border-color: #5188B5;
 }
 
-#nonClothingTab,
 #clothingTab {
-  box-sizing: border-box;
-  width: 49.7%;
-  height: 110%;
-  border-radius: 0%;
+  position: relative;
+  float: left;
+  left: 0;
+  -webkit-box-shadow: 6px -10px 20px -2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 6px -10px 20px -2px rgba(0, 0, 0, 0.35);
+  box-shadow: 6px -10px 20px -2px rgba(0, 0, 0, 0.35);
+}
+
+#nonClothingTab {
+  position: relative;
+  right: 0;
+  -webkit-box-shadow: -6px -7px 20px -2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -6px -7px 20px -2px rgba(0, 0, 0, 0.35);
+  box-shadow: -6px -7px 20px -2px rgba(0, 0, 0, 0.35);
+}
+
+.tabs {
+  /* box-sizing: border-box; */
+  width: 50%;
   color: #50A0E2;
   background-color: #A3CCEE;
-  border-color: #5188B5;
+  /* border-color: #5188B5; */
+  border: 0px;
+  /* Only round the top corners */
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.activeTab {
+  /* color */
+  background-color: rgb(231, 206, 238);
+  /* borders */
+  border-bottom: 0px;
+  border-color: rgb(223, 143, 245);
+  /* size */
+  width: 55%;
+  z-index: 5;
+  font-size: 13px;
+}
+
+.inactiveTab {
+  z-index: 4;
+  width: 45%;
 }
 
 #submit,

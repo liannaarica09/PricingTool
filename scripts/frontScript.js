@@ -37,8 +37,10 @@ $(document).ready(function () {
     $("#electronicsSelect").prop("selectedIndex", 0);
     $(".electOTab").hide();
     $(".mWTab").toggle();
-    $("#clothingTab").attr("style", "-webkit-box-shadow: -4px 4px 6px 1px rgba(162,118,175,1); - moz - box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1); box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1);");
-    $("#nonClothingTab").removeAttr("style");
+    $("#clothingTab").removeClass("inactiveTab");
+    $("#clothingTab").addClass("activeTab");
+    $("#nonClothingTab").removeClass("activeTab");
+    $("#nonClothingTab").addClass("inactiveTab");
   });
 
   $("#nonClothingTab").on("click", function (event) {
@@ -50,8 +52,11 @@ $(document).ready(function () {
     $("#electronicsSelect").prop("selectedIndex", 0);
     $(".mWTab").hide();
     $(".electOTab").toggle();
-    $("#nonClothingTab").attr("style", "-webkit-box-shadow: -4px 4px 6px 1px rgba(162,118,175,1); - moz - box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1); box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1);");
-    $("#clothingTab").removeAttr("style");
+    $("#nonClothingTab").removeClass("inactiveTab");
+    $("#nonClothingTab").addClass("activeTab");
+    $("#clothingTab").removeClass("activeTab");
+    $("#clothingTab").addClass("inactiveTab");
+
   });
 
   $("#usedTab").on("click", function (event) {
