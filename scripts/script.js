@@ -90,7 +90,8 @@ $(document).ready(function () {
     }
 
     //on submit button click
-    $("#submit").on("click", function () {
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
         $(".twelveSon").children(".errorMsg").remove();
         $("#itemsTable").empty();
         if (clothing === true) {
