@@ -275,6 +275,10 @@ tbody {
   font-weight: bolder;
 }
 
+td>img:hover {
+  cursor: crosshair;
+}
+
 .boxers {
   border: none;
 }
