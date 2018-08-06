@@ -238,13 +238,16 @@ $(document).ready(function () {
             var median = (totals[lowMiddle] + totals[highMiddle]) / 2;
             console.log("median " + median);
 
+            //clear math table
+            $('#pricingTable').empty();
+
             var importantRow = $("<tr>");
 
             //make math table
             var priceRange = $("<td>").text(lowest + "-" + highest);
             var meanPrice = $("<td>").text(mean.toFixed(2));
             var medianPrice = $("<td>").text(median.toFixed(2));
-            var modePrice = $("<td>").text(modes(totals));
+            // var modePrice = $("<td>").text(modes(totals));
             var roundedMode = $("<td>").text(modes(totalsRound));
             var numberOfItems = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
@@ -252,7 +255,7 @@ $(document).ready(function () {
             importantRow.append(priceRange);
             importantRow.append(meanPrice);
             importantRow.append(medianPrice);
-            importantRow.append(modePrice);
+            // importantRow.append(modePrice);
             importantRow.append(roundedMode);
             $("#pricingTable").append(importantRow);
             $("#tableOne").attr("style", "display:block");
