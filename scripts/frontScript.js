@@ -18,11 +18,20 @@ $(document).ready(function () {
   firebase.initializeApp(config);
   var db = firebase.database();
 
+  // Instructions modal
+  if (!localStorage.getItem('visited')) {
+    console.log("New user");
+    $('.instruct').removeClass('off');
+    $('.instruct').addClass('on');
+    localStorage.setItem('visited', true);
+  }
 
-  // var clothingNonClothing = "clothing";
-  // var mensWomens = "mens";
-  // var category = "t-shirt";
+  $(".close").on("click", function () {
+    $(".instruct").addClass("off");
+    $(".instruct").removeClass("on");
+  });
 
+  // Open and close tabs
   $("#graphTab").on("click", function (event) {
     event.preventDefault();
     $("#top_x_div").toggle();
@@ -86,7 +95,7 @@ $(document).ready(function () {
     document.documentElement.scrollTop = 0;
   });
   db.ref("recentItems").on("child_added", function (snap) {
-    console.log(snap.val().thisAll);
+    // console.log(snap.val().thisAll);
     $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
   });
 
