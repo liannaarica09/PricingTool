@@ -12,7 +12,6 @@ $(document).ready(function () {
     var head = $("#pricingTable");
     var freq;
     var freqVal;
-    var p = 1;
     var result = {};
     var runningTally = 0;
 
@@ -92,6 +91,25 @@ $(document).ready(function () {
     //on submit button click
     $("#submit").on("click", function (event) {
         event.preventDefault();
+        highest = 0;
+        lowest = 100000000000;
+        totals = [];
+        totalsRound = [];
+        Shipping = "";
+        totalNumber = "";
+        freq;
+        freqVal;
+        result = {};
+        runningTally = 0;
+        lowMiddle = 0;
+        highMiddle = 0;
+        mean = 0;
+        median = 0;
+        mode = 0;
+        meanPrice = 0;
+        medianPrice = 0;
+
+
         $(".twelveSon").children(".errorMsg").remove();
         $("#itemsTable").empty();
         if (clothing === true) {
@@ -245,6 +263,7 @@ $(document).ready(function () {
             var importantRow = $("<tr>");
 
             //make math table
+            console.log("HERE: " + mean);
             var priceRange = $("<td>").text(lowest + "-" + highest);
             var meanPrice = $("<td>").text(mean.toFixed(2));
             var medianPrice = $("<td>").text(median.toFixed(2));
