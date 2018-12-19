@@ -96,7 +96,7 @@ to our our own style modifications to match
   margin-top: 7px;
   cursor: pointer;
   font-family: 'Luckiest Guy', cursive;
-  color: rgb(255, 255, 255);
+  color: rgb(6, 138, 247);
   display: inline;
   font-size: 1.5em;
   margin: auto;
@@ -137,7 +137,7 @@ to our our own style modifications to match
 
 td {
   width: 25%;
-  color: rgb(46, 125, 189);
+  color: rgb(6, 138, 247);
   background-color: rgb(189, 220, 245);
   border-color: #5188B5;
 }
@@ -164,7 +164,7 @@ td {
 .tabs {
   /* box-sizing: border-box; */
   width: 50%;
-  color: rgb(46, 125, 189);
+  color: rgb(6, 138, 247);
   background-color: rgb(189, 220, 245);
   /* border-color: #5188B5; */
   border: 0px;
@@ -199,7 +199,7 @@ td {
 #listTab,
 #recent,
 #recentTab {
-  color: rgb(46, 125, 189);
+  color: rgb(6, 138, 247);
   background-color: rgb(189, 220, 245);
   border-color: #5188B5;
   width: 100%;
@@ -212,9 +212,9 @@ td {
 #listTab:hover,
 #recentTab:hover,
 #recentTab:hover {
-  color: rgb(46, 125, 189);
-  background-color: #A0F4B3;
-  border-color: #53CC6E;
+  color: rgb(6, 138, 247);
+  background-color: rgb(211, 180, 219);
+  border-color: rgb(223, 143, 245);
   border-width: 2px;
 }
 
@@ -222,7 +222,7 @@ td {
 #menSelect,
 #electronicsSelect,
 #otherSelect {
-  color: rgb(46, 125, 189);
+  color: rgb(6, 138, 247);
   background-color: rgb(189, 220, 245);
   border-color: #5188B5;
 }
@@ -231,15 +231,15 @@ td {
 #menSelect:hover,
 #electronicsSelect:hover,
 #otherSelect:hover {
-  color: rgb(46, 125, 189);
-  background-color: #A0F4B3;
-  border-color: #53CC6E;
+  color: rgb(6, 138, 247);
+  background-color: rgb(231, 206, 238);
+  border-color: rgb(223, 143, 245);
   border-width: 2px;
 }
 
 #input {
   text-align: left;
-  color: rgb(46, 125, 189);
+  color: rgb(6, 138, 247);
   background-color: #A0F4B3;
   border-color: #9BC9A6;
   width: 100%;
@@ -247,7 +247,7 @@ td {
 
 #input:hover {
   text-align: left;
-  color: rgb(46, 125, 189);
+  color: rgb(6, 138, 247);
   background-color: #A0F4B3;
   border-color: #48EB6C;
   border-width: 2px;
@@ -261,7 +261,7 @@ td {
 .themed-table {
   color: #5188B5;
   background-color: rgb(197, 221, 240);
-  border-color: rgb(46, 125, 189);
+  border-color: rgb(6, 138, 247);
   border-width: 2px;
 }
 
