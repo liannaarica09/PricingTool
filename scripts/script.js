@@ -44,16 +44,16 @@ $(document).ready(function () {
             },
             chart: {
                 title: 'Distribution Chart',
-                subtitle: 'number of items sold at this pirce point, rounded to the nearest dollar'
+                // subtitle: 'number of items sold at this price point, rounded to the nearest dollar'
             },
             chartArea: {
                 left: '-50%',
                 width: '50%'
             },
             backgroundColor: {
-                fill: '#C8EBD0',
+                fill: '#CBACDA',
                 fillOpacity: 1.0,
-                stroke: '#48EB6C',
+                stroke: 'rgb(223, 143, 245)',
                 strokeWidth: '1',
             },
             bars: 'horizontal', // Required for Material Bar Charts.
@@ -75,7 +75,7 @@ $(document).ready(function () {
                     } // Top x-axis.
                 },
                 0: {
-                    color: '#3CC95B'
+                    color: 'rgb(78, 3, 121)'
                 }
             }
         };
