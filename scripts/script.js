@@ -50,12 +50,12 @@ $(document).ready(function () {
                 left: '-50%',
                 width: '50%'
             },
-            backgroundColor: {
-                fill: '#CBACDA',
-                fillOpacity: 1.0,
-                stroke: 'rgb(223, 143, 245)',
-                strokeWidth: '1',
-            },
+            // backgroundColor: {
+            //     fill: '#CBACDA',
+            //     fillOpacity: 1.0,
+            //     stroke: 'rgb(223, 143, 245)',
+            //     strokeWidth: '1',
+            // },
             bars: 'horizontal', // Required for Material Bar Charts.
             series: {
                 0: {

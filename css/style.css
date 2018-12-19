@@ -93,14 +93,12 @@ to our our own style modifications to match
 
 #lbl {
   margin-left: 5px;
-  margin-top: 7px;
   cursor: pointer;
   font-family: 'Luckiest Guy', cursive;
   color: rgb(6, 138, 247);
   display: inline;
   font-size: 1.5em;
   margin: auto;
-  height: 100%;
 }
 
 #cbx {
