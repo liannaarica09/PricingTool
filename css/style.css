@@ -16,7 +16,7 @@ exported save: Palette E.html
   position: relative;
   margin: 1em 0 0;
   font-family: 'Luckiest Guy', cursive;
-  color: #fff;
+  color: rgb(6, 138, 247);
   z-index: 2;
 }
 
@@ -24,7 +24,7 @@ exported save: Palette E.html
   position: absolute;
   border-radius: 100%;
   bottom: 10px;
-  background-color: #fff;
+  background-color: rgb(6, 138, 247);
   z-index: 1;
 }
 
@@ -96,7 +96,7 @@ to our our own style modifications to match
   margin-top: 7px;
   cursor: pointer;
   font-family: 'Luckiest Guy', cursive;
-  color: #fff;
+  color: rgb(255, 255, 255);
   display: inline;
   font-size: 1.5em;
   margin: auto;
@@ -131,14 +131,14 @@ to our our own style modifications to match
   text-align: center;
 }
 
-body {
+/* body {
   background-color: rgb(231, 206, 238);
-}
+} */
 
 td {
   width: 25%;
-  color: #50A0E2;
-  background-color: #A3CCEE;
+  color: rgb(46, 125, 189);
+  background-color: rgb(189, 220, 245);
   border-color: #5188B5;
 }
 
@@ -164,8 +164,8 @@ td {
 .tabs {
   /* box-sizing: border-box; */
   width: 50%;
-  color: #50A0E2;
-  background-color: #A3CCEE;
+  color: rgb(46, 125, 189);
+  background-color: rgb(189, 220, 245);
   /* border-color: #5188B5; */
   border: 0px;
   /* Only round the top corners */
@@ -199,8 +199,8 @@ td {
 #listTab,
 #recent,
 #recentTab {
-  color: #50A0E2;
-  background-color: #A3CCEE;
+  color: rgb(46, 125, 189);
+  background-color: rgb(189, 220, 245);
   border-color: #5188B5;
   width: 100%;
 }
@@ -212,7 +212,7 @@ td {
 #listTab:hover,
 #recentTab:hover,
 #recentTab:hover {
-  color: #50A0E2;
+  color: rgb(46, 125, 189);
   background-color: #A0F4B3;
   border-color: #53CC6E;
   border-width: 2px;
@@ -222,8 +222,8 @@ td {
 #menSelect,
 #electronicsSelect,
 #otherSelect {
-  color: #50A0E2;
-  background-color: #A3CCEE;
+  color: rgb(46, 125, 189);
+  background-color: rgb(189, 220, 245);
   border-color: #5188B5;
 }
 
@@ -231,7 +231,7 @@ td {
 #menSelect:hover,
 #electronicsSelect:hover,
 #otherSelect:hover {
-  color: #50A0E2;
+  color: rgb(46, 125, 189);
   background-color: #A0F4B3;
   border-color: #53CC6E;
   border-width: 2px;
@@ -239,7 +239,7 @@ td {
 
 #input {
   text-align: left;
-  color: #50A0E2;
+  color: rgb(46, 125, 189);
   background-color: #A0F4B3;
   border-color: #9BC9A6;
   width: 100%;
@@ -247,7 +247,7 @@ td {
 
 #input:hover {
   text-align: left;
-  color: #50A0E2;
+  color: rgb(46, 125, 189);
   background-color: #A0F4B3;
   border-color: #48EB6C;
   border-width: 2px;
@@ -261,7 +261,7 @@ td {
 .themed-table {
   color: #5188B5;
   background-color: rgb(197, 221, 240);
-  border-color: #50A0E2;
+  border-color: rgb(46, 125, 189);
   border-width: 2px;
 }
 
@@ -292,6 +292,7 @@ td>img:hover {
 }
 
 @media only screen and (max-width: 860px) {
+
   #nonClothingTab,
   #clothingTab {
     width: 49.5%;
@@ -299,6 +300,7 @@ td>img:hover {
 }
 
 @media only screen and (max-width: 740px) {
+
   #displayItems table,
   #displayItems thead,
   #displayItems tbody,
@@ -307,15 +309,18 @@ td>img:hover {
   #displayItems tr {
     display: block;
   }
+
   #displayItems thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
+
   tr {
     border: 1px solid #ccc;
     margin: auto;
   }
+
   th,
   td {
     /* Behave  like a "row" */
@@ -325,9 +330,11 @@ td>img:hover {
     width: 100%;
     text-align: center;
   }
+
   td img {
     margin: auto;
   }
+
   th:firstChild {
     background-color: hotpink;
   }
@@ -337,6 +344,7 @@ td>img:hover {
   .one-half.column {
     width: 50%;
   }
+
   .four.column.third {
     width: 30.333333%;
   }
@@ -346,9 +354,11 @@ td>img:hover {
   .one-half.column {
     width: 50%;
   }
+
   .four.column.third {
     width: 30.333333%;
   }
+
   #nonClothingTab,
   #clothingTab {
     width: 49%;
