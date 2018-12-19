@@ -179,10 +179,11 @@ td {
 
 .activeTab {
   /* color */
-  background-color: rgb(231, 206, 238);
+  color: rgb(78, 3, 121);
+  background-color: rgb(203, 172, 218);
   /* borders */
   border-bottom: 0px;
-  border-color: rgb(223, 143, 245);
+  border-color: rgb(204, 143, 245);
   /* size */
   width: 55%;
   z-index: 5;
@@ -212,9 +213,9 @@ td {
 #listTab:hover,
 #recentTab:hover,
 #recentTab:hover {
-  color: rgb(6, 138, 247);
-  background-color: rgb(211, 180, 219);
-  border-color: rgb(223, 143, 245);
+  color: rgb(78, 3, 121);
+  background-color: rgb(203, 172, 218);
+  border-color: rgb(204, 143, 245);
   border-width: 2px;
 }
 
@@ -232,7 +233,7 @@ td {
 #electronicsSelect:hover,
 #otherSelect:hover {
   color: rgb(6, 138, 247);
-  background-color: rgb(231, 206, 238);
+  background-color: rgb(203, 172, 218);
   border-color: rgb(223, 143, 245);
   border-width: 2px;
 }
@@ -240,21 +241,21 @@ td {
 #input {
   text-align: left;
   color: rgb(6, 138, 247);
-  background-color: #A0F4B3;
-  border-color: #9BC9A6;
+  background-color: rgb(160, 244, 219);
+  border-color: rgb(155, 201, 186);
   width: 100%;
 }
 
 #input:hover {
   text-align: left;
   color: rgb(6, 138, 247);
-  background-color: #A0F4B3;
-  border-color: #48EB6C;
+  background-color: rgb(160, 244, 223);
+  border-color: rgb(72, 235, 194);
   border-width: 2px;
 }
 
 #input:disabled {
-  background-color: rgb(204, 226, 208);
+  background-color: rgb(181, 224, 215);
   /* border:; */
 }
 
@@ -335,8 +336,12 @@ td>img:hover {
     margin: auto;
   }
 
-  th:firstChild {
-    background-color: hotpink;
+  th:first-child {
+    display: none;
+  }
+
+  td:first-child {
+    display: none;
   }
 }
 
