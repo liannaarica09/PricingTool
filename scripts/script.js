@@ -287,6 +287,7 @@ $(document).ready(function () {
             var medianPrice = $("<td>").text(median.toFixed(2));
             // var modePrice = $("<td>").text(modes(totals));
             var roundedMode = $("<td>").text(modes(totalsRound));
+            var modeNumber = modes(totalsRound);
             var numberOfItems = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
             console.log(typeof numberOfItems);
@@ -299,7 +300,7 @@ $(document).ready(function () {
                     "numberOf": result.findCompletedItemsResponse[0].searchResult[0].item.length,
                     "mean": mean.toFixed(2),
                     "median": median.toFixed(2),
-                    "mode": modes(totalsRound),
+                    "mode": modeNumber,
                     "conditon": condition.toString()
                 }
             });
