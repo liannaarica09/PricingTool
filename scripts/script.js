@@ -287,10 +287,10 @@ $(document).ready(function () {
             var medianPrice = $("<td>").text(median.toFixed(2));
             // var modePrice = $("<td>").text(modes(totals));
             var roundedMode = $("<td>").text(modes(totalsRound));
-            var modeNumber = modes(totalsRound);
+            var modeNumber = parseInt(modes(totalsRound));
             var numberOfItems = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
-            console.log(typeof numberOfItems);
+            console.log(typeof modeNumber);
             db.ref("serchedItems").push({
                 "search": {
                     "catagory": categoryId,
