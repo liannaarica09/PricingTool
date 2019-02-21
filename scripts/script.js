@@ -292,6 +292,7 @@ $(document).ready(function () {
             console.log(typeof numberOfItems);
             db.ref("serchedItems").push({
                 "search": {
+                    "catagory": categoryId,
                     "item": item.valueOf(),
                     "low": lowest,
                     "high": highest,
