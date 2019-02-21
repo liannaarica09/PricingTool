@@ -298,7 +298,8 @@ $(document).ready(function () {
                     "numberOf": result.findCompletedItemsResponse[0].searchResult[0].item.length,
                     "mean": mean.toFixed(2),
                     "median": median.toFixed(2),
-                    "mode": modes(totalsRound)
+                    "mode": modes(totalsRound),
+                    "conditon": condition.toString()
                 }
             });
 
