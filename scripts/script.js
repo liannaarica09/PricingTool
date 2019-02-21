@@ -15,6 +15,14 @@ $(document).ready(function () {
     var result = {};
     var runningTally = 0;
 
+    $(".mWTab").hide();
+    $(".electOTab").hide();
+    $(".brandTab").show();
+    $(".table").hide();
+    $("#top_x_div").hide();
+    document.getElementById("input").disabled = true;
+
+
     var categoryId;
     var conditionUsed = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
     var conditionNew = "&itemFilter(1).name=Condition&itemFilter(1).value=1000";
@@ -24,6 +32,19 @@ $(document).ready(function () {
     google.charts.load("current", {
         packages: ["bar"]
     });
+
+    var config = {
+        apiKey: "AIzaSyCeu8LNzpEl4vmP-_Gm4pRL04krzERMLDs",
+        authDomain: "pricingtool-7ba32.firebaseapp.com",
+        databaseURL: "https://pricingtool-7ba32.firebaseio.com",
+        projectId: "pricingtool-7ba32",
+        storageBucket: "",
+        messagingSenderId: "53201548843",
+    };
+
+    firebase.initializeApp(config);
+    var db = firebase.database();
+
 
     //drawing the chart 
     function drawStuff() {
@@ -230,9 +251,6 @@ $(document).ready(function () {
 
             makeTable(result);
 
-            //clear search
-            item = "";
-
             // sort totals
             totals.sort(function (a, b) {
                 return a - b;
@@ -271,6 +289,19 @@ $(document).ready(function () {
             var roundedMode = $("<td>").text(modes(totalsRound));
             var numberOfItems = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
+            console.log(typeof numberOfItems);
+            db.ref("serchedItems").push({
+                "search": {
+                    "item": item.valueOf(),
+                    "low": lowest,
+                    "high": highest,
+                    "numberOf": result.findCompletedItemsResponse[0].searchResult[0].item.length,
+                    "mean": mean.toFixed(2),
+                    "median": median.toFixed(2),
+                    "mode": modes(totalsRound)
+                }
+            });
+
             importantRow.append(numberOfItems);
             importantRow.append(priceRange);
             importantRow.append(meanPrice);
@@ -285,7 +316,12 @@ $(document).ready(function () {
             $(window).resize(function () {
                 drawStuff();
             });
+
+            //clear search
+            item = "";
         });
+
+
     }
 
     //Best Buy api call
@@ -462,4 +498,134 @@ $(document).ready(function () {
         });
         return modes;
     }
+
+    // Instructions modal
+    if (!localStorage.getItem('visited')) {
+        console.log("New user");
+        $('.instruct').removeClass('off');
+        $('.instruct').addClass('on');
+        localStorage.setItem('visited', true);
+    }
+
+    $(".close").on("click", function () {
+        $(".instruct").addClass("off");
+        $(".instruct").removeClass("on");
+    });
+
+    // Open and close tabs
+    $("#graphTab").on("click", function (event) {
+        event.preventDefault();
+        $("#top_x_div").toggle();
+    });
+
+    $("#clothingTab").on("click", function (event) {
+        event.preventDefault();
+        document.getElementById("input").disabled = true;
+        $("#menSelect").prop("selectedIndex", 0);
+        $("#womenSelect").prop("selectedIndex", 0);
+        $("#otherSelect").prop("selectedIndex", 0);
+        $("#electronicsSelect").prop("selectedIndex", 0);
+        $(".electOTab").hide();
+        $(".mWTab").toggle();
+        $("#clothingTab").removeClass("inactiveTab");
+        $("#clothingTab").addClass("activeTab");
+        $("#nonClothingTab").removeClass("activeTab");
+        $("#nonClothingTab").addClass("inactiveTab");
+    });
+
+    $("#nonClothingTab").on("click", function (event) {
+        event.preventDefault();
+        document.getElementById("input").disabled = true;
+        $("#menSelect").prop("selectedIndex", 0);
+        $("#womenSelect").prop("selectedIndex", 0);
+        $("#otherSelect").prop("selectedIndex", 0);
+        $("#electronicsSelect").prop("selectedIndex", 0);
+        $(".mWTab").hide();
+        $(".electOTab").toggle();
+        $("#nonClothingTab").removeClass("inactiveTab");
+        $("#nonClothingTab").addClass("activeTab");
+        $("#clothingTab").removeClass("activeTab");
+        $("#clothingTab").addClass("inactiveTab");
+
+    });
+
+    $("#usedTab").on("click", function (event) {
+        event.preventDefault();
+        $("#graphTab").text("Used Graph");
+    });
+    $("#newTab").on("click", function (event) {
+        event.preventDefault();
+        $("#graphTab").text("New Graph");
+    });
+    $("#listTab").on("click", function (event) {
+        event.preventDefault();
+        $("#displayItems").toggle();
+    });
+    $("#recentTab").on("click", function (event) {
+        event.preventDefault();
+        $(".recentItem").toggle();
+    });
+
+    $(document).on("click touchstart", ".boxers", function (event) {
+        event.preventDefault();
+        var clickItem = $(this).html();
+        db.ref("recentItems").push({
+            thisAll: $(this).parent(".recentTR").html(),
+        });
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    });
+    db.ref("recentItems").on("child_added", function (snap) {
+        // console.log(snap.val().thisAll);
+        $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
+    });
+
+    //set enter in seach to click button
+    $("#input").on("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            $('#submit').click();
+        }
+    });
+
+    // Created for an Articles on:
+    // https://www.html5andbeyond.com/bubbling-text-effect-no-canvas-required/
+
+
+    // Define a blank array for the effect positions. This will be populated based on width of the title.
+    var bArray = [];
+    // Define a size array, this will be used to vary bubble sizes
+    var sArray = [4, 6, 8, 10];
+
+    // Push the header width values to bArray
+    for (var i = 0; i < $('.bubbles').width(); i++) {
+        bArray.push(i);
+    }
+
+    // Function to select random array element
+    // Used within the setInterval a few times
+    function randomValue(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // setInterval function used to create new bubble every 350 milliseconds
+    setInterval(function () {
+
+        // Get a random size, defined as variable so it can be used for both width and height
+        var size = randomValue(sArray);
+        // New bubble appeneded to div with it's size and left position being set inline
+        // Left value is set through getting a random value from bArray
+        $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+
+        // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
+        // Callback function used to remove finsihed animations from the page
+        $('.individual-bubble').animate({
+            'bottom': '100%',
+            'opacity': '-=0.7'
+        }, 3000, function () {
+            $(this).remove();
+        });
+
+
+    }, 350);
 });
