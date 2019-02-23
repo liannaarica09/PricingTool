@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pricing Table</title>
+    <style>
+        .row {
+            display: grid;
+            grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr 1fr 1fr;
+            margin: 15px;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <p>Catagory</p>
+        <p>Search</p>
+        <p>Condition</p>
+        <p># of</p>
+        <p>Range</p>
+        <p>Mean</p>
+        <p>Median</p>
+        <p>Mode</p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+    <script>
+        var config = {
+            apiKey: "AIzaSyCeu8LNzpEl4vmP-_Gm4pRL04krzERMLDs",
+            authDomain: "pricingtool-7ba32.firebaseapp.com",
+            databaseURL: "https://pricingtool-7ba32.firebaseio.com",
+            projectId: "pricingtool-7ba32",
+            storageBucket: "",
+            messagingSenderId: "53201548843",
+        };
+
+        firebase.initializeApp(config);
+        var db = firebase.database();
+
+        db.ref("serchedItems").orderByChild("search/mode").on("value", function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    console.log(childSnapshot.val().search.numberOf)
+                    var cat = $("<div>");
+                    var condition = childSnapshot.val().search.conditon;
+                    var current = childSnapshot.val().search;
+                    var count = $('<div>').text(childSnapshot.val().search.numberOf);
+                    var row = $('<div>').addClass('row');
+                    var catId = current.catagory;
+                    var item = $('<div>').text(current.item);
+                    var range = $('<div>').text(current.low + " - " + current.low);
+                    var mean = $('<div>').text(current.mean);
+                    var median = $('<div>').text(current.median);
+                    var mode = $('<div>').text(current.mode);
+                    var queryURL =
+                        "https://cors-anywhere.herokuapp.com/http://open.api.ebay.com/Shopping?callname=GetCategoryInfo&appid=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&version=967&siteid=0&responseencoding=JSON&CategoryID=" +
+                        catId;
+
+                    if (condition.includes("3000")) {
+                        var con = $('<div>').text('Used');
+                    } else {
+                        var con = $('<div>').text('New');
+                    }
+
+                    $.ajax({
+                        url: queryURL,
+                        method: "GET",
+                    }).then(function (response) {
+                        result = JSON.parse(response);
+
+                        // console.log(result.CategoryArray.Category[0].CategoryName);
+                        cat.text(result.CategoryArray.Category[0].CategoryName);
+                    });
+
+                    row.append(cat);
+                    row.append(item);
+                    row.append(con);
+                    row.append(count);
+                    row.append(range);
+                    row.append(mean);
+                    row.append(median);
+                    row.append(mode);
+                    $('body').append(row);
+                });
+            },
+            function (errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+    </script>
+</body>
+
+</html>
