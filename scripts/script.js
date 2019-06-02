@@ -194,15 +194,15 @@ $(document).ready(function () {
         document.getElementById("input").disabled = false;
 
     });
-    $("#electronicsSelect").on("change", function () {
-        $("#input").val("");
-        $("#menSelect").prop("selectedIndex", 0);
-        $("#womenSelect").prop("selectedIndex", 0);
-        $("#otherSelect").prop("selectedIndex", 0);
-        categoryId = $(this).val();
-        clothing = false;
-        document.getElementById("input").disabled = false;
-    });
+    // $("#electronicsSelect").on("change", function () {
+    //     $("#input").val("");
+    //     $("#menSelect").prop("selectedIndex", 0);
+    //     $("#womenSelect").prop("selectedIndex", 0);
+    //     $("#otherSelect").prop("selectedIndex", 0);
+    //     categoryId = $(this).val();
+    //     clothing = false;
+    //     document.getElementById("input").disabled = false;
+    // });
 
     //ebay api call and initialize graph
     function getEbayData() {
@@ -309,7 +309,6 @@ $(document).ready(function () {
             importantRow.append(priceRange);
             importantRow.append(meanPrice);
             importantRow.append(medianPrice);
-            // importantRow.append(modePrice);
             importantRow.append(roundedMode);
             $("#pricingTable").append(importantRow);
             $("#tableOne").attr("style", "display:block");
@@ -328,49 +327,49 @@ $(document).ready(function () {
     }
 
     //Best Buy api call
-    function getBestBuyData() {
-        queryURL =
-            "https://api.bestbuy.com/v1/products((search=" +
-            item +
-            ")&(categoryPath.id=" +
-            categoryId +
-            "))?apiKey=aZbPaFdEwGA1IMWTXeQt0ONL&sort=image.asc&show=image,modelNumber,name,regularPrice,shipping,thumbnailImage&format=json&pageSize=100";
+    // function getBestBuyData() {
+    //     queryURL =
+    //         "https://api.bestbuy.com/v1/products((search=" +
+    //         item +
+    //         ")&(categoryPath.id=" +
+    //         categoryId +
+    //         "))?apiKey=aZbPaFdEwGA1IMWTXeQt0ONL&sort=image.asc&show=image,modelNumber,name,regularPrice,shipping,thumbnailImage&format=json&pageSize=100";
 
-        $.ajax({
-            url: queryURL,
-            method: "GET",
-        }).then(function (response) {
-            if (!('0' in response.products)) {
-                var errorDisplay = $("<p>");
-                errorDisplay.addClass("errorMsg");
-                $(".twelveSon").append(errorDisplay.text("Sorry, your search returned 0 results. Please try again"));
-                return;
-            }
-            for (i = 0; i < response.products.length; i++) {
-                var newRow = $("<tr>");
-                var picture = $("<td>").html(
-                    "<img src=" +
-                    response.products[i].image +
-                    " alt='img' 'height=100px' width='100px'>"
-                );
-                var Title = $("<td>").text(response.products[i].name);
-                var Price = $("<td>").text(response.products[i].regularPrice);
-                Title.addClass("boxers");
-                newRow.append(picture);
-                newRow.append(Title);
-                newRow.append(Price);
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET",
+    //     }).then(function (response) {
+    //         if (!('0' in response.products)) {
+    //             var errorDisplay = $("<p>");
+    //             errorDisplay.addClass("errorMsg");
+    //             $(".twelveSon").append(errorDisplay.text("Sorry, your search returned 0 results. Please try again"));
+    //             return;
+    //         }
+    //         for (i = 0; i < response.products.length; i++) {
+    //             var newRow = $("<tr>");
+    //             var picture = $("<td>").html(
+    //                 "<img src=" +
+    //                 response.products[i].image +
+    //                 " alt='img' 'height=100px' width='100px'>"
+    //             );
+    //             var Title = $("<td>").text(response.products[i].name);
+    //             var Price = $("<td>").text(response.products[i].regularPrice);
+    //             Title.addClass("boxers");
+    //             newRow.append(picture);
+    //             newRow.append(Title);
+    //             newRow.append(Price);
 
-                var Shipping = $("<td>").text("$0.00");
-                var Total = $("<td>").text(response.products[i].regularPrice);
+    //             var Shipping = $("<td>").text("$0.00");
+    //             var Total = $("<td>").text(response.products[i].regularPrice);
 
-                newRow.append(Shipping);
-                newRow.append(Total);
-                body.append(newRow);
-            }
-            item = "";
-            console.log(response);
-        });
-    }
+    //             newRow.append(Shipping);
+    //             newRow.append(Total);
+    //             body.append(newRow);
+    //         }
+    //         item = "";
+    //         console.log(response);
+    //     });
+    // }
 
     function createFreq(arry) {
         arry.sort(function (a, b) {

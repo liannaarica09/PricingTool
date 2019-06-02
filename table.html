@@ -29,8 +29,8 @@
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
     <script>
         var config = {
@@ -47,7 +47,7 @@
 
         db.ref("serchedItems").orderByChild("search/mode").on("value", function (snapshot) {
                 snapshot.forEach(function (childSnapshot) {
-                    console.log(childSnapshot.val().search.numberOf)
+                    // console.log(childSnapshot.val().search.numberOf)
                     var cat = $("<div>");
                     var condition = childSnapshot.val().search.conditon;
                     var current = childSnapshot.val().search;
@@ -58,6 +58,7 @@
                     var range = $('<div>').text(current.low + " - " + current.low);
                     var mean = $('<div>').text(current.mean);
                     var median = $('<div>').text(current.median);
+                    console.log(current.mode);
                     var mode = $('<div>').text(current.mode);
                     var queryURL =
                         "https://cors-anywhere.herokuapp.com/http://open.api.ebay.com/Shopping?callname=GetCategoryInfo&appid=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&version=967&siteid=0&responseencoding=JSON&CategoryID=" +
@@ -69,25 +70,29 @@
                         var con = $('<div>').text('New');
                     }
 
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET",
-                    }).then(function (response) {
-                        result = JSON.parse(response);
+                    if (current.catagory) {
+                        if (current.item) {
+                            $.ajax({
+                                url: queryURL,
+                                method: "GET",
+                            }).then(function (response) {
+                                result = JSON.parse(response);
 
-                        // console.log(result.CategoryArray.Category[0].CategoryName);
-                        cat.text(result.CategoryArray.Category[0].CategoryName);
-                    });
+                                // console.log(result.CategoryArray.Category[0].CategoryName);
+                                cat.text(result.CategoryArray.Category[0].CategoryName);
+                            });
 
-                    row.append(cat);
-                    row.append(item);
-                    row.append(con);
-                    row.append(count);
-                    row.append(range);
-                    row.append(mean);
-                    row.append(median);
-                    row.append(mode);
-                    $('body').append(row);
+                            row.append(cat);
+                            row.append(item);
+                            row.append(con);
+                            row.append(count);
+                            row.append(range);
+                            row.append(mean);
+                            row.append(median);
+                            row.append(mode);
+                            $('body').append(row);
+                        }
+                    }
                 });
             },
             function (errorObject) {
