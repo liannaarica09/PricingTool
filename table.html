@@ -9,7 +9,8 @@
     <style>
         .row {
             display: grid;
-            grid-template-columns: 2fr 3fr 1fr 2fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: auto auto auto auto auto auto auto auto;
+            grid-gap: 10px;
             margin: 15px;
             border-bottom: 1px solid black;
         }
@@ -47,7 +48,6 @@
 
         db.ref("serchedItems").orderByChild("search/mode").on("value", function (snapshot) {
                 snapshot.forEach(function (childSnapshot) {
-                    // console.log(childSnapshot.val().search.numberOf)
                     var cat = $("<div>");
                     var condition = childSnapshot.val().search.conditon;
                     var current = childSnapshot.val().search;
@@ -55,7 +55,7 @@
                     var row = $('<div>').addClass('row');
                     var catId = current.catagory;
                     var item = $('<div>').text(current.item);
-                    var range = $('<div>').text(current.low + " - " + current.low);
+                    var range = $('<div>').text(current.low + " - " + current.high);
                     var mean = $('<div>').text(current.mean);
                     var median = $('<div>').text(current.median);
                     var mode = $('<div>').text(current.mode);

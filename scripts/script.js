@@ -259,11 +259,12 @@ $(document).ready(function () {
             totalsRound.sort(function (a, b) {
                 return a - b;
             });
-            // console.log(totals);
-            // console.log(totalsRound);
 
             //create frequency from rounded totals
             createFreq(totalsRound);
+
+            //find out what range most items where sold at
+            percentSoldAt(freq, freqVal)
 
             //find low and high middles, then find mean median and mode
             var lowMiddle = Math.floor((totals.length - 1) / 2);
@@ -283,6 +284,7 @@ $(document).ready(function () {
             //make math table
             console.log("HERE: " + mean);
             var priceRange = $("<td>").text(lowest + "-" + highest);
+            console.log(priceRange);
             var meanPrice = $("<td>").text(mean.toFixed(2));
             var medianPrice = $("<td>").text(median.toFixed(2));
             // var modePrice = $("<td>").text(modes(totals));
@@ -378,7 +380,7 @@ $(document).ready(function () {
         var a = [];
         var b = [];
         var prev;
-        console.log(arry);
+        // console.log(arry);
 
         for (var i = 0; i < arry.length; i++) {
             if (arry[i] !== prev) {
@@ -392,7 +394,13 @@ $(document).ready(function () {
 
         freq = a;
         freqVal = b;
-        console.log(arry);
+        // console.log(arry);
+    }
+
+    function percentSoldAt(costs, numSold) {
+        console.log(costs);
+        console.log(numSold);
+
     }
 
     function makeTable(results) {
@@ -465,7 +473,7 @@ $(document).ready(function () {
 
 
             //push price to totals and rounder total. Add to running tally of totals.
-            console.log(totalNumber);
+            // console.log(totalNumber);
             runningTally += totalNumber;
             // console.log(runningTally.toFixed(2));
 
