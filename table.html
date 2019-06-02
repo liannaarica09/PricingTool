@@ -58,11 +58,10 @@
                     var range = $('<div>').text(current.low + " - " + current.low);
                     var mean = $('<div>').text(current.mean);
                     var median = $('<div>').text(current.median);
-                    console.log(current.mode);
                     var mode = $('<div>').text(current.mode);
-                    var queryURL =
-                        "https://cors-anywhere.herokuapp.com/http://open.api.ebay.com/Shopping?callname=GetCategoryInfo&appid=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&version=967&siteid=0&responseencoding=JSON&CategoryID=" +
-                        catId;
+                    // var queryURL =
+                    //     "https://cors-anywhere.herokuapp.com/http://open.api.ebay.com/Shopping?callname=GetCategoryInfo&appid=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&version=967&siteid=0&responseencoding=JSON&CategoryID=" +
+                    //     catId;
 
                     if (condition.includes("3000")) {
                         var con = $('<div>').text('Used');
@@ -70,29 +69,130 @@
                         var con = $('<div>').text('New');
                     }
 
-                    if (current.catagory) {
-                        if (current.item) {
-                            $.ajax({
-                                url: queryURL,
-                                method: "GET",
-                            }).then(function (response) {
-                                result = JSON.parse(response);
+                    if (catId) {
+                        console.log(typeof catId);
+                        // if (current.item) {
+                        //     $.ajax({
+                        //         url: queryURL,
+                        //         method: "GET",
+                        //     }).then(function (response) {
+                        //         result = JSON.parse(response);
+                        //         console.log(result);
+                        //         cat.text(result.CategoryArray.Category[0].CategoryName);
+                        //     });
 
-                                // console.log(result.CategoryArray.Category[0].CategoryName);
-                                cat.text(result.CategoryArray.Category[0].CategoryName);
-                            });
-
-                            row.append(cat);
-                            row.append(item);
-                            row.append(con);
-                            row.append(count);
-                            row.append(range);
-                            row.append(mean);
-                            row.append(median);
-                            row.append(mode);
-                            $('body').append(row);
+                        switch (catId) {
+                            case "15724":
+                                cat.text("Women's Clothing")
+                                break;
+                            case "63862":
+                                cat.text("Coats and Jackets")
+                                break;
+                            case "63861":
+                                cat.text("Dresses")
+                                break;
+                            case "11514":
+                                cat.text("Lingerie")
+                                break;
+                            case "11554":
+                                cat.text("Jeans")
+                                break;
+                            case "3009":
+                                cat.text("Jumpsuits and Rompers")
+                                break;
+                            case "169001":
+                                cat.text("Leggings")
+                                break;
+                            case "63863":
+                                cat.text("Pants")
+                                break;
+                            case "11555":
+                                cat.text("Shorts")
+                                break;
+                            case "63864":
+                                cat.text("Skirts")
+                                break;
+                            case "63865":
+                                cat.text("Suits and Blazers")
+                                break;
+                            case "63866":
+                                cat.text("Sweaters")
+                                break;
+                            case "155226":
+                                cat.text("Sweats and Hoodies")
+                                break;
+                            case "63867":
+                                cat.text("Swimwear")
+                                break;
+                            case "63869":
+                                cat.text("Tees")
+                                break;
+                            case "53159":
+                                cat.text("Tops and Blouse")
+                                break;
+                            case "15775":
+                                cat.text("Vests")
+                                break;
+                            case "1059":
+                                cat.text("Men's Clothing")
+                                break;
+                            case "3002":
+                                cat.text("Men's Blazers and Sports Coats")
+                                break;
+                            case "57990":
+                                cat.text("Men's Casual Shirts")
+                                break;
+                            case "57988":
+                                cat.text("Men's Coats and Jackets")
+                                break;
+                            case "57991":
+                                cat.text("Men's Dress Shirts")
+                                break;
+                            case "11483":
+                                cat.text("Men's Jeans")
+                                break;
+                            case "57989":
+                                cat.text("Men's Pants")
+                                break;
+                            case "15689":
+                                cat.text("Men's Shorts")
+                                break;
+                            case "11510":
+                                cat.text("Men's PJs and Robes")
+                                break;
+                            case "3001":
+                                cat.text("Men's Suits")
+                                break;
+                            case "11484":
+                                cat.text("Men's Sweaters")
+                                break;
+                            case "155183":
+                                cat.text("Men's Sweats and Hoodies")
+                                break;
+                            case "15690":
+                                cat.text("Men's Swimwear")
+                                break;
+                            case "15687":
+                                cat.text("Men's Tees")
+                                break;
+                            case "15691":
+                                cat.text("Men's Vests")
+                                break;
+                            default:
+                                break;
                         }
+
+                        row.append(cat);
+                        row.append(item);
+                        row.append(con);
+                        row.append(count);
+                        row.append(range);
+                        row.append(mean);
+                        row.append(median);
+                        row.append(mode);
+                        $('body').append(row);
                     }
+                    // }
                 });
             },
             function (errorObject) {
