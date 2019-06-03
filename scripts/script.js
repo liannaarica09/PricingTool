@@ -215,11 +215,11 @@ $(document).ready(function () {
             "&paginationInput.pageNumber=1&categoryId=" +
             categoryId;
 
-        console.log("Entered getEbayData");
-        console.log(queryURL);
-        console.log(category);
-        console.log(item);
-        console.log(condition);
+        // console.log("Entered getEbayData");
+        // console.log(queryURL);
+        // console.log(category);
+        // console.log(item);
+        // console.log(condition);
 
 
         $.ajax({
@@ -268,13 +268,13 @@ $(document).ready(function () {
 
             //find low and high middles, then find mean median and mode
             var lowMiddle = Math.floor((totals.length - 1) / 2);
-            console.log("lowMiddle " + lowMiddle);
+            // console.log("lowMiddle " + lowMiddle);
             var highMiddle = Math.ceil((totals.length - 1) / 2);
-            console.log("highMiddle " + highMiddle);
+            // console.log("highMiddle " + highMiddle);
             var mean = parseFloat(runningTally).toFixed(2) / result.findCompletedItemsResponse[0].searchResult[0].item.length;
-            console.log("Mean: " + parseFloat(runningTally).toFixed(2) + "/" + result.findCompletedItemsResponse[0].searchResult[0].item.length + " = " + mean);
+            // console.log("Mean: " + parseFloat(runningTally).toFixed(2) + "/" + result.findCompletedItemsResponse[0].searchResult[0].item.length + " = " + mean);
             var median = (totals[lowMiddle] + totals[highMiddle]) / 2;
-            console.log("median " + median);
+            // console.log("median " + median);
 
             //clear math table
             $('#pricingTable').empty();
@@ -282,9 +282,8 @@ $(document).ready(function () {
             var importantRow = $("<tr>");
 
             //make math table
-            console.log("HERE: " + mean);
+            // console.log("HERE: " + mean);
             var priceRange = $("<td>").text(lowest + "-" + highest);
-            console.log(priceRange);
             var meanPrice = $("<td>").text(mean.toFixed(2));
             var medianPrice = $("<td>").text(median.toFixed(2));
             // var modePrice = $("<td>").text(modes(totals));
@@ -292,7 +291,6 @@ $(document).ready(function () {
             var modeNumber = parseInt(modes(totalsRound));
             var numberOfItems = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
-            console.log(typeof modeNumber);
             db.ref("serchedItems").push({
                 "search": {
                     "catagory": categoryId,
@@ -394,13 +392,36 @@ $(document).ready(function () {
 
         freq = a;
         freqVal = b;
+        console.log(freq);
+        console.log(freqVal);
         // console.log(arry);
     }
 
     function percentSoldAt(costs, numSold) {
-        console.log(costs);
-        console.log(numSold);
+        var nextFive;
+        var prevFive;
+        var fives = [];
+        var soldFives = [];
 
+        for (var j = 0; j < costs.length; j++) {
+            for (k = costs[j]; k % 5 !== 0; k++) {
+                nextFive = k + 1;
+            }
+
+            if (nextFive != prevFive) {
+                fives.push(nextFive);
+                console.log(fives);
+                soldFives.push(1);
+                console.log(soldFives);
+            } else {
+                soldFives[soldFives.length - 1]++
+            }
+
+            prevFive = nextFive;
+        }
+
+        console.log(fives);
+        console.log(soldFives);
     }
 
     function makeTable(results) {
@@ -457,18 +478,18 @@ $(document).ready(function () {
 
             //if total number is higher than current highest number replace it
             if (totalNumber.toFixed(2) > Number(highest)) {
-                console.log(highest + " is lower than");
-                console.log(totalNumber);
+                // console.log(highest + " is lower than");
+                // console.log(totalNumber);
                 highest = totalNumber.toFixed(2);
-                console.log("New high price: " + totalNumber.toFixed(2));
+                // console.log("New high price: " + totalNumber.toFixed(2));
             }
 
             //if totaol number lower than current lowest number replace it
             if (totalNumber.toFixed(2) < Number(lowest)) {
-                console.log(lowest = " is higher than");
-                console.log(totalNumber);
+                // console.log(lowest = " is higher than");
+                // console.log(totalNumber);
                 lowest = totalNumber.toFixed(2);
-                console.log("New low price: " + totalNumber.toFixed(2));
+                // console.log("New low price: " + totalNumber.toFixed(2));
             }
 
 
