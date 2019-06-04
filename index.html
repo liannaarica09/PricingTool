@@ -24,241 +24,275 @@
     <link rel="stylesheet" href="./css/skeleton.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Akronim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <header>
-        <div class="bubbles">
-            <h1>Pricing Tool</h1>
-        </div>
-    </header>
+    <div class="content">
+        <header>
+            <div class="bubbles">
+                <h1>Pricing Tool</h1>
+            </div>
+        </header>
 
-    <div class="container instruct off">
-        <div class="row cntr">
-            <h3>Welcome!</h3>
-            <p>If your new to this tool here are a few tips:</p>
-            <ol>
-                <li>Start by chosing either the clothing or Non-clothing tab.</li>
-                <li>Then:
-                    <ul>
-                        <li>
-                            <strong>For clothing:</strong> chose either women's or men's. From the drowpdown menu you
-                            can choose
-                            a more specific catagory or just search all clothing.</li>
-                        <li>
-                            <strong>For non-clothing:</strong> chose to search eBay or Best Buy. Choose the catagory
-                            you want to
-                            search from the dropdown.
-                        </li>
-                    </ul>
-                </li>
-                <li>If the item you're pricing is new, check the 'New' box.</li>
-                <li>Type the brand and any keywords into the search bar and tap the 'Search' button.</li>
-                <li>
-                    A table will appear showing you the number of items matching your search, the price range, and the
-                    mean, median, and mode
-                    prices.
-                    <p>If you'd like to see a distribution chart of your results, tap the graph tab.</p>
-                    <p>If you'd like to look for a specific item or check that your results are accurate tap the list
-                        button.
-                        If you find the specitic item you can add it to our list of recently priced items by tapping
+        <div class="container instruct off">
+            <div class="row cntr">
+                <h3>Welcome!</h3>
+                <p>If your new to this tool here are a few tips:</p>
+                <ol>
+                    <li>Start by chosing either the clothing or Non-clothing tab.</li>
+                    <li>Then:
+                        <ul>
+                            <li>
+                                <strong>For clothing:</strong> chose either women's or men's. From the drowpdown menu
+                                you
+                                can choose
+                                a more specific catagory or just search all clothing.</li>
+                            <li>
+                                <strong>For non-clothing:</strong> chose to search eBay or Best Buy. Choose the catagory
+                                you want to
+                                search from the dropdown.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>If the item you're pricing is new, check the 'New' box.</li>
+                    <li>Type the brand and any keywords into the search bar and tap the 'Search' button.</li>
+                    <li>
+                        A table will appear showing you the number of items matching your search, the price range, and
                         the
-                        on picture of the item.</p>
-                </li>
-            </ol>
-            <button class='close'>Close</button>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row cntr">
-            <button id="clothingTab" class="themed-button tabs">Clothing</button>
-            <button id="nonClothingTab" class="themed-button tabs">Non-Clothing</button>
-        </div>
-
-        <!-- clothing row -->
-        <div class="row">
-            <section class="mWTab">
-                <div class="six columns">
-                    <select id="womenSelect" class="themed-select">
-                        <option id="womenIntitialOption" value="" selected disabled hidden>Women's</option>
-                        <optgroup label="Women's Clothing">
-                            <option value="15724">Women's Clothing</option>
-                            <option value="63862">Coats and Jackets</option>
-                            <option value="63861">Dresses</option>
-                            <option value="11514">Lingerie</option>
-                            <option value="11554">Jeans</option>
-                            <option value="3009">Jumpsuits and Rompers</option>
-                            <option value="169001">Leggings</option>
-                            <option value="63863">Pants</option>
-                            <option value="11555">Shorts</option>
-                            <option value="63864">Skirts</option>
-                            <option value="63865">Suits and Blazers</option>
-                            <option value="63866">Sweaters</option>
-                            <option value="155226">Sweats and Hoodies</option>
-                            <option value="63867">Swimwear</option>
-                            <!-- <option value="63869">Tees</option> -->
-                            <option value="53159">Tops and Blouse</option>
-                            <option value="15775">Vests</option>
-                        </optgroup>
-                    </select>
-                </div>
-
-                <div class="six columns">
-                    <select id="menSelect" class="themed-select">
-                        <option id="menInitialOption" value="" selected disabled hidden>Men's</option>
-                        <optgroup label="Men's Clothing">
-                            <option value="1059">Men's Clothing</option>
-                            <option value="3002">Blazers and Sports Coats</option>
-                            <option value="57990">Casual Shirts</option>
-                            <option value="57988">Coats and Jackets</option>
-                            <option value="57991">Dress Shirts</option>
-                            <option value="11483">Jeans</option>
-                            <option value="57989">Pants</option>
-                            <option value="15689">Shorts</option>
-                            <option value="11510">PJs and Robes</option>
-                            <option value="3001">Suits</option>
-                            <option value="11484">Sweaters</option>
-                            <option value="155183">Sweats and Hoodies</option>
-                            <option value="15690">Swimwear</option>
-                            <option value="15687">Tees</option>
-                            <option value="15691">Vest</option>
-                        </optgroup>
-                    </select>
-                </div>
-
-            </section>
-
-            <!-- Non-Clothing row Nick was here -->
-            <div class="row electOTab">
-
-                <div class="six columns">
-
-                    <!-- <select id="electronicsSelect" class="themed-select">
-                        <option id="electronicsInitialOption" value="" selected disabled hidden>Electronics From Best
-                            Buy</option>
-                        <optgroup label="Electronics">
-                            <option value="abcat0401000">Digital Cameras</option>
-                            <option value="pcmcat242800050021">Health, Fitness, Beauty</option>
-                            <option value="abcat0204000">Headphones</option>
-                            <option value="pcmcat241600050001">Home Audio</option>
-                            <option value="pcmcat310200050004">Portable/Wireless Speakers</option>
-                            <option value="abcat0912000">Small Kitchen Appliances</option>
-                        </optgroup>
-                    </select> -->
-                </div>
-
-                <div class="six columns">
-                    <select id="otherSelect" class="themed-select">
-                        <option selected disabled hidden>Other</option>
-                        <optgroup label="Men's Accessories">
-                            <option value="4250">Men's Accessories</option>
-                            <option value="52365">Hats</option>
-                            <option value="52382">Scarves</option>
-                            <option value="2996">Wallets</option>
-                        </optgroup>
-                        <optgroup label="Women's Accessories">
-                            <option value="4251">Women's Accessories</option>
-                            <option value="169291">Bags and Handbags</option>
-                            <option value="45220">Hair Accessories</option>
-                            <option value="45230">Hats</option>
-                        </optgroup>
-                        <optgroup label="Home &amp; Garden">
-                            <option value="11700">Home &amp; Garden</option>
-                            <option value="20444">Bedding</option>
-                            <option value="3197">Furniture</option>
-                            <option value="20571">Rugs &amp; Carpets</option>
-                        </optgroup>
-                        <optgroup label="Shoes">
-                            <option value="3034">Women's Shoes</option>
-                            <option value="53557">Women's Boots</option>
-                            <option value="55793">Women's Heels</option>
-                            <option value="62107">Women's Sandals</option>
-                            <option value="93427">Men's Shoes</option>
-                            <option value="11498">Men's Boots</option>
-                            <option value="24087">Men's Casual</option>
-                            <option value="53120">Men's Dress Shoes</option>
-                            <option value="11504">Men's Sandals</option>
-                        </optgroup>
-                        <optgroup label="Pottery &amp; Glass">
-                            <option value="870">Pottery &amp; Glass</option>
-                            <option value="50693">Glass</option>
-                            <option value="18875">Pottery &amp; China</option>
-                        </optgroup>
-                        <optgroup label="Other">
-                            <option value="20081">Antiques</option>
-                            <option value="550">Art</option>
-                            <option value="1">Collectables</option>
-                            <option value="14339">Crafts</option>
-                            <option value="237">Dolls &amp; Bears</option>
-                            <option value="45100">Entertainment Memorabilia</option>
-                            <option value="907">Holiday and Seasonal</option>
-                            <option value="281">Jewelry &amp; Watches</option>
-                            <option value="619">Musical Instruments</option>
-                            <option value="888">Sporting Goods</option>
-                            <option value="64482">Sports Memorabilia</option>
-                            <option value="220">Toys and Hobbies</option>
-                            <option value="1249">Video Games &amp; Consoles</option>
-                            <option value="99">Everything Else</option>
-                        </optgroup>
-                    </select>
-                </div>
+                        mean, median, and mode
+                        prices.
+                        <p>If you'd like to see a distribution chart of your results, tap the graph tab.</p>
+                        <p>If you'd like to look for a specific item or check that your results are accurate tap the
+                            list
+                            button.
+                            If you find the specitic item you can add it to our list of recently priced items by tapping
+                            the
+                            on picture of the item.</p>
+                    </li>
+                </ol>
+                <button class='close'>Close</button>
             </div>
         </div>
 
-        <div class="row brandTab">
-            <div class="twelve columns">
-                <form name="search" action="">
-                    <div class="four columns third">
-                        <input id="input" class="themed-input" type="text">
+        <div class="container">
+            <div class="row cntr">
+                <button id="clothingTab" class="themed-button tabs">Clothing</button>
+                <button id="nonClothingTab" class="themed-button tabs">Non-Clothing</button>
+            </div>
+
+            <!-- clothing row -->
+            <div class="row">
+                <section class="mWTab">
+                    <div class="six columns">
+                        <select id="womenSelect" class="themed-select">
+                            <option id="womenIntitialOption" value="" selected disabled hidden>Women's</option>
+                            <optgroup label="Women's Clothing">
+                                <option value="15724">Women's Clothing</option>
+                                <option value="63862">Coats and Jackets</option>
+                                <option value="63861">Dresses</option>
+                                <option value="11514">Lingerie</option>
+                                <option value="11554">Jeans</option>
+                                <option value="3009">Jumpsuits and Rompers</option>
+                                <option value="169001">Leggings</option>
+                                <option value="63863">Pants</option>
+                                <option value="11555">Shorts</option>
+                                <option value="63864">Skirts</option>
+                                <option value="63865">Suits and Blazers</option>
+                                <option value="63866">Sweaters</option>
+                                <option value="155226">Sweats and Hoodies</option>
+                                <option value="63867">Swimwear</option>
+                                <!-- <option value="63869">Tees</option> -->
+                                <option value="53159">Tops and Blouse</option>
+                                <option value="15775">Vests</option>
+                            </optgroup>
+                        </select>
                     </div>
-                    <div class="four columns third">
-                        <button id="submit" class="themed-button" accesskey="s">Search</button>
+
+                    <div class="six columns">
+                        <select id="menSelect" class="themed-select">
+                            <option id="menInitialOption" value="" selected disabled hidden>Men's</option>
+                            <optgroup label="Men's Clothing">
+                                <option value="1059">Men's Clothing</option>
+                                <option value="3002">Blazers and Sports Coats</option>
+                                <option value="57990">Casual Shirts</option>
+                                <option value="57988">Coats and Jackets</option>
+                                <option value="57991">Dress Shirts</option>
+                                <option value="11483">Jeans</option>
+                                <option value="57989">Pants</option>
+                                <option value="15689">Shorts</option>
+                                <option value="11510">PJs and Robes</option>
+                                <option value="3001">Suits</option>
+                                <option value="11484">Sweaters</option>
+                                <option value="155183">Sweats and Hoodies</option>
+                                <option value="15690">Swimwear</option>
+                                <option value="15687">Tees</option>
+                                <option value="15691">Vest</option>
+                            </optgroup>
+                        </select>
                     </div>
-                    <div id="cbxColumn" class="four columns third">
 
-                        <input id="cbx" type="checkbox">
+                </section>
 
-                        <label id="lbl" for="cbx">New</label>
+                <!-- Non-Clothing row Nick was here -->
+                <div class="row electOTab">
+
+                    <div class="six columns">
+
+                        <!-- <select id="electronicsSelect" class="themed-select">
+                            <option id="electronicsInitialOption" value="" selected disabled hidden>Electronics From Best
+                                Buy</option>
+                            <optgroup label="Electronics">
+                                <option value="abcat0401000">Digital Cameras</option>
+                                <option value="pcmcat242800050021">Health, Fitness, Beauty</option>
+                                <option value="abcat0204000">Headphones</option>
+                                <option value="pcmcat241600050001">Home Audio</option>
+                                <option value="pcmcat310200050004">Portable/Wireless Speakers</option>
+                                <option value="abcat0912000">Small Kitchen Appliances</option>
+                            </optgroup>
+                        </select> -->
                     </div>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="twelve columns">
-                <table id="tableOne" class="table themed-table">
-                    <thead>
-                        <tr>
-                            <th># of Results</th>
-                            <th>Range</th>
-                            <th>Mean</th>
-                            <th>Median</th>
-                            <!-- <th>Mode</th> -->
-                            <th>Rounded Mode</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pricingTable">
-                        <!-- Insert price rows here -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="twelve columns">
-                <div class="twelveSon"></div>
-                <button id="graphTab" class="button-primary themed-button">Graph</button>
-                <div id="hideYoKids">
-                    <div id="top_x_div" style="width: 100%; height: 150vh;"></div>
+                    <div class="six columns">
+                        <select id="otherSelect" class="themed-select">
+                            <option selected disabled hidden>Other</option>
+                            <optgroup label="Men's Accessories">
+                                <option value="4250">Men's Accessories</option>
+                                <option value="52365">Hats</option>
+                                <option value="52382">Scarves</option>
+                                <option value="2996">Wallets</option>
+                            </optgroup>
+                            <optgroup label="Women's Accessories">
+                                <option value="4251">Women's Accessories</option>
+                                <option value="169291">Bags and Handbags</option>
+                                <option value="45220">Hair Accessories</option>
+                                <option value="45230">Hats</option>
+                            </optgroup>
+                            <optgroup label="Home &amp; Garden">
+                                <option value="11700">Home &amp; Garden</option>
+                                <option value="20444">Bedding</option>
+                                <option value="3197">Furniture</option>
+                                <option value="20571">Rugs &amp; Carpets</option>
+                            </optgroup>
+                            <optgroup label="Shoes">
+                                <option value="3034">Women's Shoes</option>
+                                <option value="53557">Women's Boots</option>
+                                <option value="55793">Women's Heels</option>
+                                <option value="62107">Women's Sandals</option>
+                                <option value="93427">Men's Shoes</option>
+                                <option value="11498">Men's Boots</option>
+                                <option value="24087">Men's Casual</option>
+                                <option value="53120">Men's Dress Shoes</option>
+                                <option value="11504">Men's Sandals</option>
+                            </optgroup>
+                            <optgroup label="Pottery &amp; Glass">
+                                <option value="870">Pottery &amp; Glass</option>
+                                <option value="50693">Glass</option>
+                                <option value="18875">Pottery &amp; China</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option value="20081">Antiques</option>
+                                <option value="550">Art</option>
+                                <option value="1">Collectables</option>
+                                <option value="14339">Crafts</option>
+                                <option value="237">Dolls &amp; Bears</option>
+                                <option value="45100">Entertainment Memorabilia</option>
+                                <option value="907">Holiday and Seasonal</option>
+                                <option value="281">Jewelry &amp; Watches</option>
+                                <option value="619">Musical Instruments</option>
+                                <option value="888">Sporting Goods</option>
+                                <option value="64482">Sports Memorabilia</option>
+                                <option value="220">Toys and Hobbies</option>
+                                <option value="1249">Video Games &amp; Consoles</option>
+                                <option value="99">Everything Else</option>
+                            </optgroup>
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="twelve columns">
 
-                <button id="listTab" class="button-primary themed-button">List</button>
+            <div class="row brandTab">
+                <div class="twelve columns">
+                    <form name="search" action="">
+                        <div class="four columns third">
+                            <input id="input" class="themed-input" type="text">
+                        </div>
+                        <div class="four columns third">
+                            <button id="submit" class="themed-button" accesskey="s">Search</button>
+                        </div>
+                        <div id="cbxColumn" class="four columns third">
 
-                <table class="table themed-table" id="displayItems">
+                            <input id="cbx" type="checkbox">
+
+                            <label id="lbl" for="cbx">New</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <table id="tableOne" class="table themed-table">
+                        <thead>
+                            <tr>
+                                <th># of Results</th>
+                                <th>Range</th>
+                                <th>Mean</th>
+                                <th>Median</th>
+                                <!-- <th>Mode</th> -->
+                                <th>Rounded Mode</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pricingTable">
+                            <!-- Insert price rows here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="twelve columns">
+                    <div class="twelveSon"></div>
+                    <button id="graphTab" class="button-primary themed-button">Graph</button>
+                    <div id="hideYoKids">
+                        <div id="top_x_div" style="width: 100%; height: 150vh;"></div>
+                    </div>
+                </div>
+                <div class="twelve columns">
+
+                    <button id="listTab" class="button-primary themed-button">List</button>
+
+                    <table class="table themed-table" id="displayItems">
+                        <thead>
+                            <tr>
+                                <th>Picture</th>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Shipping</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsTable">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div class="twelve columns">
+    
+                    <button id="recentTab" class="button-primary themed-button">Recently Priced</button>
+    
+                </div>
+    
+                 <div class="row">
+                    <div class="twelve columns">
+                        <p class="themed-table recentItem">For items to appear here please click the title of chosen item.
+                        </p>
+                    </div>
+                </div>
+    
+                <table class="table themed-table recentItem">
                     <thead>
                         <tr>
                             <th>Picture</th>
@@ -268,40 +302,14 @@
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody id="itemsTable">
+                    <tbody id="recentTable" class="themed-table">
                     </tbody>
-                </table>
+                </table> -->
             </div>
-
-            <div class="twelve columns">
-
-                <button id="recentTab" class="button-primary themed-button">Recently Priced</button>
-
-            </div>
-
-            <div class="row">
-                <div class="twelve columns">
-                    <p class="themed-table recentItem">For items to appear here please click the title of chosen item.
-                    </p>
-                </div>
-            </div>
-
-            <table class="table themed-table recentItem">
-                <thead>
-                    <tr>
-                        <th>Picture</th>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Shipping</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody id="recentTable" class="themed-table">
-                </tbody>
-            </table>
         </div>
-
     </div>
+    <a id="footerLink" href="https://github.com/liannaarica09/PricingTool">github</a>
+
 
 
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>

@@ -14,10 +14,13 @@ exported save: Palette E.html
 
 .bubbles h1 {
   position: relative;
-  margin: 1em 0 0;
-  font-family: 'Luckiest Guy', cursive;
+  /* margin: 1em 0 0; */
+  /* font-family: 'Luckiest Guy', cursive; */
+  /* font-family: 'Akronim', cursive; */
+  font-family: 'Lobster', cursive;
   color: rgb(6, 138, 247);
   z-index: 2;
+  margin: 1em;
 }
 
 .individual-bubble {
@@ -269,7 +272,7 @@ tbody {
 }
 
 .boxers:hover {
-  color: #53CC6E;
+  color: rgb(228, 247, 232);
   font: outline;
   font-weight: bolder;
 }
@@ -288,6 +291,18 @@ td>img:hover {
 
 .hideYoKids {
   visibility: hidden
+}
+
+.content {
+  min-height: calc(100vh - 40px);
+}
+
+#footerLink {
+  text-decoration: none;
+  padding: 5px;
+  background-color: rgb(211, 247, 219);
+  border-radius: 10px;
+  font-family: 'Lobster', cursive;
 }
 
 @media only screen and (max-width: 860px) {

@@ -264,7 +264,7 @@ $(document).ready(function () {
             createFreq(totalsRound);
 
             //find out what range most items where sold at
-            percentSoldAt(freq, freqVal)
+            percentSoldAt(totalsRound);
 
             //find low and high middles, then find mean median and mode
             var lowMiddle = Math.floor((totals.length - 1) / 2);
@@ -301,7 +301,8 @@ $(document).ready(function () {
                     "mean": mean.toFixed(2),
                     "median": median.toFixed(2),
                     "mode": modeNumber,
-                    "conditon": condition.toString()
+                    "conditon": condition.toString(),
+                    "allPrices": totals
                 }
             });
 
@@ -397,7 +398,7 @@ $(document).ready(function () {
         // console.log(arry);
     }
 
-    function percentSoldAt(costs, numSold) {
+    function percentSoldAt(costs) {
         var nextFive;
         var prevFive;
         var fives = [];
@@ -410,9 +411,7 @@ $(document).ready(function () {
 
             if (nextFive != prevFive) {
                 fives.push(nextFive);
-                console.log(fives);
                 soldFives.push(1);
-                console.log(soldFives);
             } else {
                 soldFives[soldFives.length - 1]++
             }
@@ -597,19 +596,19 @@ $(document).ready(function () {
         $(".recentItem").toggle();
     });
 
-    $(document).on("click touchstart", ".boxers", function (event) {
-        event.preventDefault();
-        var clickItem = $(this).html();
-        db.ref("recentItems").push({
-            thisAll: $(this).parent(".recentTR").html(),
-        });
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    });
-    db.ref("recentItems").on("child_added", function (snap) {
-        // console.log(snap.val().thisAll);
-        $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
-    });
+    // $(document).on("click touchstart", ".boxers", function (event) {
+    //     event.preventDefault();
+    //     var clickItem = $(this).html();
+    //     db.ref("recentItems").push({
+    //         thisAll: $(this).parent(".recentTR").html(),
+    //     });
+    //     document.body.scrollTop = 0;
+    //     document.documentElement.scrollTop = 0;
+    // });
+    // db.ref("recentItems").on("child_added", function (snap) {
+    //     // console.log(snap.val().thisAll);
+    //     $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
+    // });
 
     //set enter in seach to click button
     $("#input").on("keyup", function (event) {
@@ -624,39 +623,39 @@ $(document).ready(function () {
 
 
     // Define a blank array for the effect positions. This will be populated based on width of the title.
-    var bArray = [];
+    // var bArray = [];
     // Define a size array, this will be used to vary bubble sizes
-    var sArray = [4, 6, 8, 10];
+    // var sArray = [4, 6, 8, 10];
 
     // Push the header width values to bArray
-    for (var i = 0; i < $('.bubbles').width(); i++) {
-        bArray.push(i);
-    }
+    // for (var i = 0; i < $('.bubbles').width(); i++) {
+    //     bArray.push(i);
+    // }
 
     // Function to select random array element
     // Used within the setInterval a few times
-    function randomValue(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-    }
+    // function randomValue(arr) {
+    //     return arr[Math.floor(Math.random() * arr.length)];
+    // }
 
     // setInterval function used to create new bubble every 350 milliseconds
-    setInterval(function () {
+    // setInterval(function () {
 
-        // Get a random size, defined as variable so it can be used for both width and height
-        var size = randomValue(sArray);
-        // New bubble appeneded to div with it's size and left position being set inline
-        // Left value is set through getting a random value from bArray
-        $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+    // Get a random size, defined as variable so it can be used for both width and height
+    // var size = randomValue(sArray);
+    // New bubble appeneded to div with it's size and left position being set inline
+    // Left value is set through getting a random value from bArray
+    // $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
 
-        // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
-        // Callback function used to remove finsihed animations from the page
-        $('.individual-bubble').animate({
-            'bottom': '100%',
-            'opacity': '-=0.7'
-        }, 3000, function () {
-            $(this).remove();
-        });
+    // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
+    // Callback function used to remove finsihed animations from the page
+    //     $('.individual-bubble').animate({
+    //         'bottom': '100%',
+    //         'opacity': '-=0.7'
+    //     }, 3000, function () {
+    //         $(this).remove();
+    //     });
 
 
-    }, 350);
+    // }, 350);
 });
