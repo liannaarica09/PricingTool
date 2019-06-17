@@ -4,6 +4,10 @@ http://paletton.com/#uid=c4O1+3y2T0kaWV7mcQPiXAMb5J97h-i
 exported save: Palette E.html
 */
 
+var (--purple-text, rgb(78, 3, 121));
+var (--purple-background, rgb(203, 172, 218));
+var (--purple-border, rgb(204, 143, 245));
+
 /* bubbleing header by html5andblog on CodePen */
 
 .bubbles {
@@ -143,32 +147,31 @@ td {
   border-color: #5188B5;
 }
 
-#clothingTab {
-  position: relative;
-  float: left;
-  left: 0;
-  /* -webkit-box-shadow: 2px -7px 20px -2px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 2px -7px 20px -2px rgba(0, 0, 0, 0.35);
-  box-shadow: 2px -7px 20px -2px rgba(0, 0, 0, 0.35); */
-  box-shadow: 0px -3px 10px rgba(102, 101, 101, 0.35), -5px -3px 5px rgba(102, 101, 101, 0.35), 5px -3px 5px rgba(102, 101, 101, 0.35);
-}
-
-#nonClothingTab {
-  position: relative;
-  right: 0;
-  /* -webkit-box-shadow: -2px -7px 20px -2px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: -2px -7px 20px -2px rgba(0, 0, 0, 0.35);
-  box-shadow: -2px -7px 20px -2px rgba(0, 0, 0, 0.35); */
-  box-shadow: 0px -3px 10px rgba(102, 101, 101, 0.35), -5px -3px 5px rgba(102, 101, 101, 0.35), 5px -3px 5px rgba(102, 101, 101, 0.35);
-}
-
 .tabs {
   /* box-sizing: border-box; */
-  width: 50%;
   color: rgb(6, 138, 247);
+  border-color: #5188B5;
+  /* border: 0px; */
+}
+
+ul {
+  list-style: none;
+}
+
+.tabs li {
+  float: left;
+  position: relative;
+  width: 50%;
+}
+
+.tabs a {
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  text-decoration: none;
   background-color: rgb(189, 220, 245);
-  /* border-color: #5188B5; */
-  border: 0px;
+
   /* Only round the top corners */
   -webkit-border-top-left-radius: 10px;
   -webkit-border-top-right-radius: 10px;
@@ -178,22 +181,98 @@ td {
   border-top-right-radius: 10px;
 }
 
-.activeTab {
-  /* color */
-  color: rgb(78, 3, 121);
-  background-color: rgb(203, 172, 218);
-  /* borders */
-  border-bottom: 0px;
-  border-color: rgb(204, 143, 245);
-  /* size */
-  width: 55%;
-  z-index: 5;
-  font-size: 13px;
+.tabs .activeTab {
+  /* color: rgb(78, 3, 121); */
+  /* background-color: rgb(203, 172, 218); */
+  z-index: 3;
 }
 
-.inactiveTab {
-  z-index: 4;
-  width: 45%;
+.tabs .activeTab a {
+  /* Colors when tab is active */
+  background: white;
+  color: black;
+  /* color: rgb(78, 3, 121);
+  background-color: rgb(203, 172, 218); */
+}
+
+.tabs li:before,
+.tabs li:after,
+.tabs li a:before,
+.tabs li a:after {
+  /* All pseudo elements are 
+     abs. positioned and on bottom */
+  position: absolute;
+  bottom: 0;
+}
+
+.tabs li:last-child:after,
+.tabs li:last-child a:after,
+.tabs li:first-child:before,
+.tabs li:first-child a:before,
+.tabs .activeTab:after,
+.tabs .activeTab:before,
+.tabs .activeTab a:after,
+.tabs .activeTab a:before {
+  content: "";
+}
+
+.tabs .activeTab:before,
+.tabs .activeTab:after {
+  background: white;
+
+  /* Squares below circles */
+  z-index: 1;
+}
+
+/* Squares */
+.tabs li:before,
+.tabs li:after {
+  background-color: rgb(189, 220, 245);
+  width: 10px;
+  height: 10px;
+}
+
+.tabs li:before {
+  left: -10px;
+}
+
+.tabs li:after {
+  right: -10px;
+}
+
+/* Circles */
+.tabs li a:after,
+.tabs li a:before {
+  width: 20px;
+  height: 20px;
+  /* Circles are circular */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: white;
+
+  /* Circles over squares */
+  z-index: 2;
+}
+
+.tabs .activeTab a:after,
+.tabs .activeTab a:before {
+  background-color: rgb(189, 220, 245);
+}
+
+/* First and last tabs have different
+   outside color needs */
+.tabs li:first-child.activeTab a:before,
+.tabs li:last-child.activeTab a:after {
+  background: white;
+}
+
+.tabs li a:before {
+  left: -20px;
+}
+
+.tabs li a:after {
+  right: -20px;
 }
 
 #submit,
@@ -207,8 +286,8 @@ td {
   width: 100%;
 }
 
-#nonClothingTab:hover,
-#clothingTab:hover,
+#nonClothingTab a:hover,
+#clothingTab a:hover,
 #submit:hover,
 #graphTab:hover,
 #listTab:hover,

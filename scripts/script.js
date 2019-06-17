@@ -264,7 +264,7 @@ $(document).ready(function () {
             createFreq(totalsRound);
 
             //find out what range most items where sold at
-            percentSoldAt(totalsRound);
+            byFives(totalsRound);
 
             //find low and high middles, then find mean median and mode
             var lowMiddle = Math.floor((totals.length - 1) / 2);
@@ -398,7 +398,7 @@ $(document).ready(function () {
         // console.log(arry);
     }
 
-    function percentSoldAt(costs) {
+    function byFives(costs) {
         var nextFive;
         var prevFive;
         var fives = [];
