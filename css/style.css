@@ -3,10 +3,29 @@ http://paletton.com/#uid=c4O1+3y2T0kaWV7mcQPiXAMb5J97h-i
 
 exported save: Palette E.html
 */
+:root {
+  --hover-text: rgb(78, 3, 121);
+  --hover-background: rgb(203, 172, 218);
+  --hover-border: rgb(204, 143, 245);
 
-var (--purple-text, rgb(78, 3, 121));
-var (--purple-background, rgb(203, 172, 218));
-var (--purple-border, rgb(204, 143, 245));
+  --active-text: rgb(78, 3, 121);
+  --active-background: rgb(203, 172, 218);
+  --active-border: black;
+
+  --page-color: pink;
+
+  --content-background: yellow;
+
+  --input-background: rgb(160, 244, 219);
+  --input-text: rgb(6, 138, 247);
+  --input-border: rgb(155, 201, 186);
+
+  --input-hover-text: rgb(6, 138, 247);
+  --input-hover-backgournd: rgb(160, 244, 223);
+  --input-hover-border: rgb(72, 235, 194);
+
+  --input-disabled: rgb(181, 224, 215);
+}
 
 /* bubbleing header by html5andblog on CodePen */
 
@@ -189,10 +208,9 @@ ul {
 
 .tabs .activeTab a {
   /* Colors when tab is active */
-  background: white;
-  color: black;
-  /* color: rgb(78, 3, 121);
-  background-color: rgb(203, 172, 218); */
+  background: var(--active-background);
+  color: var(--active-text);
+  border: var(--active-border);
 }
 
 .tabs li:before,
@@ -218,7 +236,7 @@ ul {
 
 .tabs .activeTab:before,
 .tabs .activeTab:after {
-  background: white;
+  background: var(--active-background);
 
   /* Squares below circles */
   z-index: 1;
@@ -267,6 +285,15 @@ ul {
   background: white;
 }
 
+.tabs li:hover:after,
+.tabs li:hover:before {
+  background: var(--hover-background);
+}
+
+.tabs li:first-child.hover a:after {
+  background: var(--hover-background);
+}
+
 .tabs li a:before {
   left: -20px;
 }
@@ -293,9 +320,9 @@ ul {
 #listTab:hover,
 #recentTab:hover,
 #recentTab:hover {
-  color: rgb(78, 3, 121);
-  background-color: rgb(203, 172, 218);
-  border-color: rgb(204, 143, 245);
+  color: var(--hover-text);
+  background-color: var(--hover-background);
+  border-color: var(--hover-border);
   border-width: 2px;
 }
 
@@ -320,23 +347,23 @@ ul {
 
 #input {
   text-align: left;
-  color: rgb(6, 138, 247);
-  background-color: rgb(160, 244, 219);
-  border-color: rgb(155, 201, 186);
+  color: var(--input-text);
+  background-color: var(--input-background);
+  border-color: var(--input-border);
   width: 100%;
 }
 
 #input:hover {
   text-align: left;
-  color: rgb(6, 138, 247);
-  background-color: rgb(160, 244, 223);
-  border-color: rgb(72, 235, 194);
+  color: var(--input-hover-text);
+  background-color: var(--input-hover-backgournd);
+  border-color: var(--input-hover-border);
   border-width: 2px;
 }
 
 #input:disabled {
-  background-color: rgb(181, 224, 215);
-  /* border:; */
+  background-color: var(--input-disabled);
+  border: var(--input-disabled);
 }
 
 .themed-table {
@@ -350,22 +377,8 @@ tbody {
   text-align: center;
 }
 
-.boxers:hover {
-  color: rgb(228, 247, 232);
-  font: outline;
-  font-weight: bolder;
-}
-
 td>img:hover {
   cursor: crosshair;
-}
-
-.boxers {
-  border: none;
-}
-
-.boxers:hover {
-  cursor: pointer;
 }
 
 .hideYoKids {
